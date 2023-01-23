@@ -19,9 +19,11 @@ The webapp will store whether a user is a doctor or a patient via the backend ba
 #### Backend
 
 Daniel Lobo
+
 Franco Kreppel
 
 ### Frontend
 
 Richard Mercado
+
 Divyanshi Saini
