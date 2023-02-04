@@ -1,5 +1,6 @@
 User stories
 End users: doctors and patients
+	
 	Doctors
 		As a doctor, I want an app where I can set appointments with my patients so I can attend patients in a timely manner
 		As a doctor, I want an app that shows the medical history of my patients so I can better understand my patient's medical needs.
@@ -11,6 +12,7 @@ End users: doctors and patients
 
 
 Issues:
+
 	Login Page to allow users access to their account and info
 	A profile page where users can view and edit their info
 	A place where patients can leave reviews and feedback for physicians
@@ -21,6 +23,7 @@ Issues:
 
 
 Issues for this sprint: 
+	
 	Front End
 		Welcome Page
 		Login Page
