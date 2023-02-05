@@ -6,7 +6,21 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="nav">
-      <nav></nav>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/" className="nav-bar-element">
+              Home
+            </Link>
+            <Link to="/login" className="nav-bar-element">
+              Login
+            </Link>
+            <Link to="/" className="nav-bar-element">
+              Error
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 };
