@@ -15,9 +15,6 @@ const Navbar = () => {
             <Link to="/login" className="nav-bar-element">
               Login
             </Link>
-            <Link to="/" className="nav-bar-element">
-              Error
-            </Link>
           </li>
         </ul>
       </nav>
