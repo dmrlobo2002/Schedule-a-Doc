@@ -30,6 +30,25 @@ func CreateUser(c *gin.Context)
 		fmt.Println(err)
 		return
 	}
+
+	validationErr := validate.Struct(user)
+	if validationErr != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": validationErr.Error()})
+		fmt.Println(validationErr)
+		return
+	}
+	user.ID = primitive.NewObjectID()
+
+	result, insertErr := userCollection.InsertOne(ctx, user)
+	if insertErr != nil {
+		msg := fmt.Sprintf("user item was not created")
+		c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
+		fmt.Println(insertErr)
+		return
+	}
+	defer cancel()
+
+	c.JSON(http.StatusOK, result)
 }
 
 //add an order
