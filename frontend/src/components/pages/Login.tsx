@@ -1,7 +1,30 @@
 import React from "react";
+import './Login.css';
 
-const Login = () => {
-  return <h1>Login Page!</h1>;
+export const Login = () => {
+  return(
+    <div className="Login">
+      <div className="Box">
+        <div className="Signin"> Sign in</div>  
+        <div className="inputs">
+          <input className="email" placeholder="Email or Phone"/>
+            <input className="password" placeholder="Password" />
+        </div> 
+        <div style={{display:"flex", justifyContent: "center"}}>
+          <button className="loginButton">LOGIN</button>
+          </div>  
+          <div className="SignupMessage" style={{display:"flex", justifyContent: "center"}}>
+            Don't have an account? 
+            <button className="SignupButton"> SIGN UP</button>
+            </div> 
+           
+      </div>
+    </div>
+  );
+  
+  
+
+
 };
 
 export default Login;
