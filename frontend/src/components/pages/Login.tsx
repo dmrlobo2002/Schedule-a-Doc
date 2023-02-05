@@ -17,7 +17,7 @@ export const Login = () => {
             Don't have an account? 
             <button className="SignupButton"> SIGN UP</button>
             </div> 
-           
+            <button className="ForgotPassword"> Forgot Password? </button>
       </div>
     </div>
   );
