@@ -7,25 +7,24 @@ import (
 	"time"
 
 	"server/models"
-	"github.com/go-playground/validator/v10"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/bson/primitive"
-	"go.mongodb.org/mongo-driver/bson"
+
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 var validate = validator.New()
 
-var orderCollection *mongo.Collection = OpenCollection(Client, "users")
+var userCollection *mongo.Collection = OpenCollection(Client, "users")
 
-//create a user
-func CreateUser(c *gin.Context)
-{
+// create a user
+func CreateUser(c *gin.Context) {
 	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 
 	var user models.User
 
-	if err := c.BindJSON(&order); err != nil {
+	if err := c.BindJSON(&user); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		fmt.Println(err)
 		return
@@ -51,220 +50,220 @@ func CreateUser(c *gin.Context)
 	c.JSON(http.StatusOK, result)
 }
 
-//add an order
-func AddOrder(c *gin.Context) {
+// //add an order
+// func AddOrder(c *gin.Context) {
 
-	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+// 	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 
-	var order models.Order
+// 	var order models.User
 
-	if err := c.BindJSON(&order); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		fmt.Println(err)
-		return
-	}
+// 	if err := c.BindJSON(&order); err != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+// 		fmt.Println(err)
+// 		return
+// 	}
 
-	validationErr := validate.Struct(order)
-	if validationErr != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": validationErr.Error()})
-		fmt.Println(validationErr)
-		return
-	}
-	order.ID = primitive.NewObjectID()
+// 	validationErr := validate.Struct(order)
+// 	if validationErr != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{"error": validationErr.Error()})
+// 		fmt.Println(validationErr)
+// 		return
+// 	}
+// 	order.ID = primitive.NewObjectID()
 
-	result, insertErr := orderCollection.InsertOne(ctx, order)
-	if insertErr != nil {
-		msg := fmt.Sprintf("order item was not created")
-		c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
-		fmt.Println(insertErr)
-		return
-	}
-	defer cancel()
+// 	result, insertErr := userCollection.InsertOne(ctx, order)
+// 	if insertErr != nil {
+// 		msg := fmt.Sprintf("order item was not created")
+// 		c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
+// 		fmt.Println(insertErr)
+// 		return
+// 	}
+// 	defer cancel()
 
-	c.JSON(http.StatusOK, result)
-}
+// 	c.JSON(http.StatusOK, result)
+// }
 
-//get all orders
-func GetOrders(c *gin.Context){
+// //get all orders
+// func GetOrders(c *gin.Context){
 
-	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
-	
-	var orders []bson.M
+// 	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 
-	cursor, err := orderCollection.Find(ctx, bson.M{})
+// 	var orders []bson.M
 
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		fmt.Println(err)
-		return
-	}
-	
-	if err = cursor.All(ctx, &orders); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		fmt.Println(err)
-		return
-	}
+// 	cursor, err := userCollection.Find(ctx, bson.M{})
 
-	defer cancel()
+// 	if err != nil {
+// 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+// 		fmt.Println(err)
+// 		return
+// 	}
 
-	fmt.Println(orders)
+// 	if err = cursor.All(ctx, &orders); err != nil {
+// 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+// 		fmt.Println(err)
+// 		return
+// 	}
 
-	c.JSON(http.StatusOK, orders)
-}
+// 	defer cancel()
 
-//get all orders by the waiter's name
-func GetOrdersByWaiter(c *gin.Context){
+// 	fmt.Println(orders)
 
-	waiter := c.Params.ByName("waiter")
-	
-	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
-	
-	var orders []bson.M
+// 	c.JSON(http.StatusOK, orders)
+// }
 
-	cursor, err := orderCollection.Find(ctx, bson.M{"server": waiter})
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		fmt.Println(err)
-		return
-	}
+// //get all orders by the waiter's name
+// func GetOrdersByWaiter(c *gin.Context){
 
-	if err = cursor.All(ctx, &orders); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		fmt.Println(err)
-		return
-	}
+// 	waiter := c.Params.ByName("waiter")
 
-	defer cancel()
+// 	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 
-	fmt.Println(orders)
+// 	var orders []bson.M
 
-	c.JSON(http.StatusOK, orders)
-}
+// 	cursor, err := userCollection.Find(ctx, bson.M{"server": waiter})
+// 	if err != nil {
+// 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+// 		fmt.Println(err)
+// 		return
+// 	}
 
-//get an order by its id
-func GetOrderById(c *gin.Context){
+// 	if err = cursor.All(ctx, &orders); err != nil {
+// 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+// 		fmt.Println(err)
+// 		return
+// 	}
 
-	orderID := c.Params.ByName("id")
-	docID, _ := primitive.ObjectIDFromHex(orderID)
+// 	defer cancel()
 
-	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+// 	fmt.Println(orders)
 
-	var order bson.M
+// 	c.JSON(http.StatusOK, orders)
+// }
 
-	if err := orderCollection.FindOne(ctx, bson.M{"_id": docID}).Decode(&order); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		fmt.Println(err)
-		return
-	}
+// //get an order by its id
+// func GetOrderById(c *gin.Context){
 
-	defer cancel()
+// 	orderID := c.Params.ByName("id")
+// 	docID, _ := primitive.ObjectIDFromHex(orderID)
 
-	fmt.Println(order)
+// 	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 
-	c.JSON(http.StatusOK, order)
-}
+// 	var order bson.M
 
-//update a waiter's name for an order
-func UpdateWaiter(c *gin.Context){
+// 	if err := userCollection.FindOne(ctx, bson.M{"_id": docID}).Decode(&order); err != nil {
+// 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+// 		fmt.Println(err)
+// 		return
+// 	}
 
-	orderID := c.Params.ByName("id")
-	docID, _ := primitive.ObjectIDFromHex(orderID)
+// 	defer cancel()
 
-	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+// 	fmt.Println(order)
 
-	type Waiter struct {
-		Server		*string				`json:"server"`
-	}
+// 	c.JSON(http.StatusOK, order)
+// }
 
-	var waiter Waiter
+// //update a waiter's name for an order
+// func UpdateWaiter(c *gin.Context){
 
-	if err := c.BindJSON(&waiter); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		fmt.Println(err)
-		return
-	}
+// 	orderID := c.Params.ByName("id")
+// 	docID, _ := primitive.ObjectIDFromHex(orderID)
 
-	result, err := orderCollection.UpdateOne(ctx, bson.M{"_id": docID}, 
-		bson.D{
-			{"$set", bson.D{{"server", waiter.Server}}},
-		},
-	)
+// 	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		fmt.Println(err)
-		return
-	}
+// 	type Waiter struct {
+// 		Server		*string				`json:"server"`
+// 	}
 
-	defer cancel()
+// 	var waiter Waiter
 
-	c.JSON(http.StatusOK, result.ModifiedCount)
+// 	if err := c.BindJSON(&waiter); err != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+// 		fmt.Println(err)
+// 		return
+// 	}
 
-}
+// 	result, err := userCollection.UpdateOne(ctx, bson.M{"_id": docID},
+// 		bson.D{
+// 			{"$set", bson.D{{"server", waiter.Server}}},
+// 		},
+// 	)
 
-//update the order
-func UpdateOrder(c *gin.Context){
+// 	if err != nil {
+// 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+// 		fmt.Println(err)
+// 		return
+// 	}
 
-	orderID := c.Params.ByName("id")
-	docID, _ := primitive.ObjectIDFromHex(orderID)
+// 	defer cancel()
 
-	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+// 	c.JSON(http.StatusOK, result.ModifiedCount)
 
-	var order models.Order
+// }
 
-	if err := c.BindJSON(&order); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		fmt.Println(err)
-		return
-	}
+// //update the order
+// func UpdateOrder(c *gin.Context){
 
-	validationErr := validate.Struct(order)
-	if validationErr != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": validationErr.Error()})
-		fmt.Println(validationErr)
-		return
-	}
+// 	orderID := c.Params.ByName("id")
+// 	docID, _ := primitive.ObjectIDFromHex(orderID)
 
-	result, err := orderCollection.ReplaceOne(
-		ctx,
-		bson.M{"_id": docID},
-		bson.M{
-			"dish":  order.Dish,
-			"price": order.Price,
-			"server": order.Server,
-			"table": order.Table,
-		},
-	)
+// 	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		fmt.Println(err)
-		return
-	}
+// 	var order models.User
 
-	defer cancel()
+// 	if err := c.BindJSON(&order); err != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+// 		fmt.Println(err)
+// 		return
+// 	}
 
-	c.JSON(http.StatusOK, result.ModifiedCount)
-}
+// 	validationErr := validate.Struct(order)
+// 	if validationErr != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{"error": validationErr.Error()})
+// 		fmt.Println(validationErr)
+// 		return
+// 	}
 
-//delete an order given the id
-func DeleteOrder(c * gin.Context){
-	
-	orderID := c.Params.ByName("id")
-	docID, _ := primitive.ObjectIDFromHex(orderID)
+// 	result, err := userCollection.ReplaceOne(
+// 		ctx,
+// 		bson.M{"_id": docID},
+// 		bson.M{
+// 			"dish":  order.Dish,
+// 			"price": order.Price,
+// 			"server": order.Server,
+// 			"table": order.Table,
+// 		},
+// 	)
 
-	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+// 	if err != nil {
+// 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+// 		fmt.Println(err)
+// 		return
+// 	}
 
-	result, err := orderCollection.DeleteOne(ctx, bson.M{"_id": docID})
-	
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		fmt.Println(err)
-		return
-	}
+// 	defer cancel()
 
-	defer cancel()
+// 	c.JSON(http.StatusOK, result.ModifiedCount)
+// }
 
-	c.JSON(http.StatusOK, result.DeletedCount)
+// //delete an order given the id
+// func DeleteOrder(c * gin.Context){
 
-}
+// 	orderID := c.Params.ByName("id")
+// 	docID, _ := primitive.ObjectIDFromHex(orderID)
+
+// 	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+
+// 	result, err := orderCollection.DeleteOne(ctx, bson.M{"_id": docID})
+
+// 	if err != nil {
+// 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+// 		fmt.Println(err)
+// 		return
+// 	}
+
+// 	defer cancel()
+
+// 	c.JSON(http.StatusOK, result.DeletedCount)
+
+// }
