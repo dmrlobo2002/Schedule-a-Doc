@@ -23,7 +23,7 @@ func main() {
 	
 	// these are the endpoints
 	//C
-	router.POST("/signup, routes.CreateUser)
+	router.POST("/signup", routes.CreateUser)
 	//R
 	// router.GET("/waiter/:waiter", routes.GetOrdersByWaiter)
 	// router.GET("/orders", routes.GetOrders)
