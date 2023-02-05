@@ -42,6 +42,7 @@
     height: 40px;
     border-radius: 6px;
     border-width: 1;
+    
 }
 
 .loginButton{
@@ -71,4 +72,14 @@
 }
 .SignupButton:hover{
     color:darkblue;
+}
+
+.ForgotPassword{
+    text-decoration-line: underline;
+    display: flex;
+    color: darkblue;
+    
+}
+.ForgotPassword:hover{
+    color:aliceblue;
 }
