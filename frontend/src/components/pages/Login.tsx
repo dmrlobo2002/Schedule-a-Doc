@@ -17,7 +17,9 @@ export const Login = () => {
             Don't have an account? 
             <button className="SignupButton"> SIGN UP</button>
             </div> 
+            <div className="FP" style={{display:"flex", justifyContent: "center"}}>
             <button className="ForgotPassword"> Forgot Password? </button>
+            </div>
       </div>
     </div>
   );
