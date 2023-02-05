@@ -27,5 +27,6 @@ Issues for this sprint:
 	Front End
 		Welcome Page
 		Login Page
+		Sign-Up Page
 	Back End 
 
