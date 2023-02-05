@@ -4,8 +4,9 @@ import (
 	"os"
 
 	"server/routes"
+
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-    	"github.com/gin-contrib/cors"
 )
 
 func main() {
@@ -20,10 +21,10 @@ func main() {
 	router.Use(gin.Logger())
 
 	router.Use(cors.Default())
-	
+
 	// these are the endpoints
 	//C
-	router.POST("/signup, routes.CreateUser)
+	router.POST("/signup", routes.CreateUser)
 	//R
 	// router.GET("/waiter/:waiter", routes.GetOrdersByWaiter)
 	// router.GET("/orders", routes.GetOrders)
