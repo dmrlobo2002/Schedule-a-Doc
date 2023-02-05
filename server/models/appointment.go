@@ -5,8 +5,10 @@ import (
 )
 
 type Appointment struct {
-	Date     *string            `json:"date"`
-	Category *string            `json:"category"`
-	Patient  primitive.ObjectID `bson:"_id"`
-	Doctor   primitive.ObjectID `bson:"_id"`
+	ID         primitive.ObjectID `bson:"_id"`
+	Date       *string            `json:"date"`
+	Category   *string            `json:"category"`
+	Patient    primitive.ObjectID `bson:"_patientID"`
+	Doctor     primitive.ObjectID `bson:"_doctorID"`
+	isApproved *bool              `json:"isDoctor"`
 }

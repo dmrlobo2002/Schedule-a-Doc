@@ -50,6 +50,37 @@ func CreateUser(c *gin.Context) {
 	c.JSON(http.StatusOK, result)
 }
 
+func CreateAppointment(c *gin.Context) {
+	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+
+	var appointment models.Appointment
+
+	if err := c.BindJSON(&appointment); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		fmt.Println(err)
+		return
+	}
+
+	validationErr := validate.Struct(appointment)
+	if validationErr != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": validationErr.Error()})
+		fmt.Println(validationErr)
+		return
+	}
+	appointment.ID = primitive.NewObjectID()
+
+	result, insertErr := userCollection.InsertOne(ctx, appointment)
+	if insertErr != nil {
+		msg := fmt.Sprintf("user item was not created")
+		c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
+		fmt.Println(insertErr)
+		return
+	}
+	defer cancel()
+
+	c.JSON(http.StatusOK, result)
+}
+
 // //add an order
 // func AddOrder(c *gin.Context) {
 
