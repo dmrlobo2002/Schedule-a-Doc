@@ -10,14 +10,14 @@
     height: 500px;
     background-color:rgb(140, 206, 228);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 .SignupLogo{
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: xx-large;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     color: rgb(45, 40, 40) ;
 }
 .userInput {
@@ -28,7 +28,7 @@
     height: 40px;
     border-radius: 6px;
     border-width: 1;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .lastName{
@@ -36,7 +36,7 @@
     height: 40px;
     border-radius: 6px;
     border-width: 1;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .email {
@@ -44,7 +44,7 @@
     height: 40px;
     border-radius: 6px;
     border-width: 1;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .phonenumber{
@@ -52,7 +52,7 @@
     height: 40px;
     border-radius: 6px;
     border-width: 1;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .password {
@@ -60,7 +60,7 @@
     height: 40px;
     border-radius: 6px;
     border-width: 1;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .renterpassword{
