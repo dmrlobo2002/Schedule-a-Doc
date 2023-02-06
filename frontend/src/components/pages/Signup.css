@@ -8,13 +8,18 @@
     background-color: midnightblue;
 }
 
-.Area{
+.BoxOut{
     
-    width: 375px;
-    height: 500px;
-    background-color:rgb(140, 206, 228);
-    padding: 20px;
-    border-radius: 15px;
+    width: 400px;
+    height: 525px;
+    background-color:aliceblue;
+    padding: 20px;   
+}
+.BoxIn{
+    width: 360px;
+    height: 485px;
+    background-color:rgb(87, 179, 222);
+    padding: 10px;
 }
 .SignupLogo{
     display: flex;
@@ -22,6 +27,7 @@
     align-items: center;
     font-size: xx-large;
     margin-bottom: 10px;
+    margin-top: 10px;
     color: rgb(45, 40, 40) ;
 }
 .userInput {
@@ -30,59 +36,52 @@
 .firstName{
     width: 100%;
     height: 40px;
-    border-radius: 6px;
     border-width: 1;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .lastName{
     width: 100%;
     height: 40px;
-    border-radius: 6px;
     border-width: 1;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .email {
     width: 100%;
     height: 40px;
-    border-radius: 6px;
     border-width: 1;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .phonenumber{
     width: 100%;
     height: 40px;
-    border-radius: 6px;
     border-width: 1;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .password {
     width: 100%;
     height: 40px;
-    border-radius: 6px;
     border-width: 1;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .renterpassword{
     width: 100%;
     height: 40px;
-    border-radius: 6px;
     border-width: 1;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .signupButton{
-    width: 100px;
-    height: 30px;
+    width: 92%;
+    height: 40px;
     background-color: aliceblue;
     color: darkblue;
     font: bold;
-    border-radius: 6px;
-    
+       
 }
 
 .signupButton:hover{
