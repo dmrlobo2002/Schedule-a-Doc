@@ -20,7 +20,7 @@ The webapp will store whether a user is a doctor or a patient via the backend ba
 
 Daniel Lobo
 
-Franco Kreppel
+Franco Krepel
 
 ### Frontend
 
