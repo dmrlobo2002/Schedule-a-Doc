@@ -1,0 +1,17 @@
+.Navbar{
+    justify-content: left;
+    align-items: left;
+}
+.NavArea{
+    margin-top: 0rem;
+    width: 100vw;
+    height: 45px;
+    background-color:rgb(140, 206, 228);
+    padding: 10px;
+    border-radius: 0px;
+}
+.Element{
+    padding: 10px;
+    display: inline;
+    color: red;
+}
