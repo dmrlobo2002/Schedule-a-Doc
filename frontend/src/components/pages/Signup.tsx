@@ -13,8 +13,8 @@ export const Signup = () => {
           <input className="lastName" placeholder="Last Name" />
           <input className="email" placeholder="Email" />
           <input className="phonenumber" placeholder="Phone Number" />
-          <input className="password" placeholder="Password" />
-          <input className="renterpassword" placeholder="Re-enter Password" />
+          <input type={"password"} className="password" placeholder="Password" />
+          <input type={"password"} className="renterpassword" placeholder="Re-enter Password" />
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button className="signupButton">SIGN UP</button>

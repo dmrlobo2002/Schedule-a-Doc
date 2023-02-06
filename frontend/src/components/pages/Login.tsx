@@ -9,7 +9,7 @@ export const Login = () => {
          <div className="Signin"> Sign in</div>  
         <div className="inputs">
           <input className="InEmail" placeholder="Email or Phone"/>
-            <input className="InPassword" placeholder="Password" />
+            <input type={"password"} className="InPassword" placeholder="Password" />
         </div> 
         <div style={{display:"flex", justifyContent: "center"}}>
           <button className="loginButton">LOGIN</button>
