@@ -1,0 +1,27 @@
+.Home{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
+.Area{
+    width: 800px;
+    height: 200px;
+    background-color:rgb(140, 206, 228);
+   
+}
+.HomeLogo{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    font-size: xx-large;
+    margin-bottom: 10px;
+    color: rgb(45, 40, 40) ;
+}
+.WelcomeMessage{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    font-size: x-large;
+    margin-bottom: 10px;
+    color: rgb(45, 40, 40) ;
+}

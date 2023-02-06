@@ -1,5 +1,11 @@
+<<<<<<< Updated upstream
 import React from 'react';
 import './Signup.css';
+=======
+import React, { useState } from "react";
+//import axios from "axios";
+import "./Signup.css";
+>>>>>>> Stashed changes
 
 export const Signup = () => {
     return(
