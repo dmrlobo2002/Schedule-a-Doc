@@ -13,5 +13,6 @@
 .Element{
     padding: 10px;
     display: inline;
-    color: red;
+    color: blue;
+    text-decoration: underline;
 }
