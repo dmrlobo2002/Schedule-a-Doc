@@ -5,22 +5,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(7, 7, 85);
+    background-color: rgb(7, 50, 85);
 }
 
 .outerBox{
-    width: 405px;
-    height: 395px;
+    width: 385px;
+    height: 460px;
     background-color:aliceblue;
     padding: 20px;
-    border-radius: 10px;
+   
 }
 
 
 .innerBox{
-    width: 365px;
-    height: 350px;
-    background-color:rgb(113, 183, 206);
+    width: 345px;
+    height: 420px;
+    background-color:rgb(87, 179, 222);
     padding: 10px;
 }
 
@@ -31,31 +31,30 @@
     font-size: xx-large;
     color: rgb(45, 40, 40);
     margin-bottom: 20px;
+    margin-top: 15px;
 }
 
 .inputs {
-    padding: 15px;
+    padding: 10px;
 }
 
-.email {
+.InEmail {
     width: 100%;
-    height: 40px;
-    border-radius: 6px;
+    height: 50px;
     border-width: 1;
     margin-bottom: 20px;
 }
 
-.password {
+.InPassword {
     width: 100%;
-    height: 40px;
-    border-radius: 6px;
+    height: 50px;
     border-width: 1;
-    
+    margin-bottom: 20px;
 }
 
 .loginButton{
-    width: 100px;
-    height: 30px;
+    width: 95%;
+    height: 50px;
     background-color: aliceblue;
     color: darkblue;
     font: bold;
@@ -64,7 +63,7 @@
 }
 
 .loginButton:hover{
-    background-color: darkblue;
+    background-color: rgb(7, 50, 85);
     color: aliceblue;
     
 }

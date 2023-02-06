@@ -8,8 +8,8 @@ export const Login = () => {
         <div className="innerBox">
          <div className="Signin"> Sign in</div>  
         <div className="inputs">
-          <input className="email" placeholder="Email or Phone"/>
-            <input className="password" placeholder="Password" />
+          <input className="InEmail" placeholder="Email or Phone"/>
+            <input className="InPassword" placeholder="Password" />
         </div> 
         <div style={{display:"flex", justifyContent: "center"}}>
           <button className="loginButton">LOGIN</button>
