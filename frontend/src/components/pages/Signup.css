@@ -13,13 +13,15 @@
     width: 375px;
     height: 500px;
     background-color:aliceblue;
-    padding: 20px;   
+    padding: 20px;  
+    border-radius: 7px; 
 }
 .BoxIn{
     width: 335px;
     height: 460px;
     background-color:rgb(87, 179, 222);
     padding: 10px;
+    border-radius: 7px;
 }
 .SignupLogo{
     display: flex;
