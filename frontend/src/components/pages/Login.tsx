@@ -4,12 +4,12 @@ import './Login.css';
 export const Login = () => {
   return(
     <div className="Login">
-      <div className="outerBox">
+      <div className="outerBox bg-gradient-to-r from-cyan-500 to-blue-500 shadow-2xl">
         <div className="innerBox">
          <div className="Signin"> Sign in</div>  
         <div className="inputs">
-          <input className="InEmail" placeholder="Email or Phone"/>
-            <input type={"password"} className="InPassword" placeholder="Password" />
+          <input className="InEmail pl-3" placeholder="Email or Phone"/>
+            <input type={"password"} className="InPassword pl-3" placeholder="Password" />
         </div> 
         <div style={{display:"flex", justifyContent: "center"}}>
           <button className="loginButton">LOGIN</button>

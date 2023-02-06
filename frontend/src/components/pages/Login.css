@@ -5,26 +5,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(7, 50, 85);
+    background-color: white;
 }
 
 .outerBox{
     width: 385px;
     height: 460px;
-    background-color:aliceblue;
+    /* background-color:aliceblue; */
     padding: 20px;
-    border-radius: 7px;
+    border-radius: 20px;
+    background-color: bg-gradient-to-r from-cyan-500 to-blue-500
    
 }
 
 
-.innerBox{
+/* .innerBox{
     width: 345px;
     height: 420px;
     background-color:rgb(87, 179, 222);
     padding: 10px;
     border-radius: 7px;
-}
+} */
 
 .Signin{
     display: flex;
@@ -45,7 +46,7 @@
     height: 50px;
     border-width: 1;
     margin-bottom: 20px;
-    border-radius: 4px;
+    border-radius: 10px;
 }
 
 .InPassword {
@@ -53,16 +54,16 @@
     height: 50px;
     border-width: 1;
     margin-bottom: 20px;
-    border-radius: 4px;
+    border-radius: 10px;
 }
 
 .loginButton{
     width: 95%;
     height: 50px;
     background-color: aliceblue;
-    color: darkblue;
+    color: black;
     font: bold;
-    border-radius: 4px;
+    border-radius: 10px;
     
 }
 
