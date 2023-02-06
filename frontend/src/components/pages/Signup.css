@@ -10,14 +10,14 @@
 
 .BoxOut{
     
-    width: 400px;
-    height: 525px;
+    width: 375px;
+    height: 500px;
     background-color:aliceblue;
     padding: 20px;   
 }
 .BoxIn{
-    width: 360px;
-    height: 485px;
+    width: 335px;
+    height: 460px;
     background-color:rgb(87, 179, 222);
     padding: 10px;
 }
@@ -31,13 +31,14 @@
     color: rgb(45, 40, 40) ;
 }
 .userInput {
-    padding: 15px;
+    padding: 10px;
 }
 .firstName{
     width: 100%;
     height: 40px;
     border-width: 1;
     margin-bottom: 10px;
+    border-radius: 4px;
 }
 
 .lastName{
@@ -45,6 +46,7 @@
     height: 40px;
     border-width: 1;
     margin-bottom: 10px;
+    border-radius: 4px;
 }
 
 .email {
@@ -52,6 +54,7 @@
     height: 40px;
     border-width: 1;
     margin-bottom: 10px;
+    border-radius: 4px;
 }
 
 .phonenumber{
@@ -59,6 +62,7 @@
     height: 40px;
     border-width: 1;
     margin-bottom: 10px;
+    border-radius: 4px;
 }
 
 .password {
@@ -66,13 +70,15 @@
     height: 40px;
     border-width: 1;
     margin-bottom: 10px;
+    border-radius: 4px;
 }
 
 .renterpassword{
     width: 100%;
     height: 40px;
     border-width: 1;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    border-radius: 4px;
 }
 
 .signupButton{
@@ -81,6 +87,7 @@
     background-color: aliceblue;
     color: darkblue;
     font: bold;
+    border-radius: 4px;
        
 }
 

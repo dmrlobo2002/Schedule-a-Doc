@@ -43,6 +43,7 @@
     height: 50px;
     border-width: 1;
     margin-bottom: 20px;
+    border-radius: 4px;
 }
 
 .InPassword {
@@ -50,6 +51,7 @@
     height: 50px;
     border-width: 1;
     margin-bottom: 20px;
+    border-radius: 4px;
 }
 
 .loginButton{
@@ -58,7 +60,7 @@
     background-color: aliceblue;
     color: darkblue;
     font: bold;
-    border-radius: 6px;
+    border-radius: 4px;
     
 }
 
