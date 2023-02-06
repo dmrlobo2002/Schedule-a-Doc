@@ -13,6 +13,7 @@
     height: 460px;
     background-color:aliceblue;
     padding: 20px;
+    border-radius: 7px;
    
 }
 
@@ -22,6 +23,7 @@
     height: 420px;
     background-color:rgb(87, 179, 222);
     padding: 10px;
+    border-radius: 7px;
 }
 
 .Signin{
