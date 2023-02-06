@@ -1,11 +1,15 @@
 .Signup{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: midnightblue;
 }
 
 .Area{
-    margin-top: 8rem;
+    
     width: 375px;
     height: 500px;
     background-color:rgb(140, 206, 228);
