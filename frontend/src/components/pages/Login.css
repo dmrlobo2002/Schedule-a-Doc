@@ -11,10 +11,10 @@
 .outerBox{
     width: 385px;
     height: 460px;
-    /* background-color:aliceblue; */
+    background-color:aliceblue;
     padding: 20px;
     border-radius: 20px;
-    background-color: bg-gradient-to-r from-cyan-500 to-blue-500
+    
    
 }
 
