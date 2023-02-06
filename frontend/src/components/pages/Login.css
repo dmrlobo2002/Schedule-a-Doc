@@ -5,11 +5,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: midnightblue;
+    background-color: rgb(7, 7, 85);
 }
 
 .outerBox{
-    width: 415px;
+    width: 405px;
     height: 395px;
     background-color:aliceblue;
     padding: 20px;
@@ -18,10 +18,10 @@
 
 
 .innerBox{
-    width: 375px;
+    width: 365px;
     height: 350px;
-    background-color:rgb(140, 206, 228);
-    padding: 20px;
+    background-color:rgb(113, 183, 206);
+    padding: 10px;
 }
 
 .Signin{
@@ -30,7 +30,7 @@
     align-items: center;
     font-size: xx-large;
     color: rgb(45, 40, 40);
-    
+    margin-bottom: 20px;
 }
 
 .inputs {
