@@ -7,17 +7,22 @@
     align-items: center;
     background-color: midnightblue;
 }
-.Box{
 
-    margin-top: 8rem;
-    width: 375px;
-    height: 325px;
-    background-color:rgb(140, 206, 228);
+.outerBox{
+    width: 415px;
+    height: 395px;
+    background-color:aliceblue;
     padding: 20px;
     border-radius: 10px;
-
 }
 
+
+.innerBox{
+    width: 375px;
+    height: 350px;
+    background-color:rgb(140, 206, 228);
+    padding: 20px;
+}
 
 .Signin{
     display: flex;
@@ -29,7 +34,7 @@
 }
 
 .inputs {
-    padding: 20px;
+    padding: 15px;
 }
 
 .email {
