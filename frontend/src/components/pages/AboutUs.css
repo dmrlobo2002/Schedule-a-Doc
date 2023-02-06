@@ -5,14 +5,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:rgb(7, 50, 85);
+    background-color: white;
 }
 .Area{
     width: 375px;
     height: 325px;
     background-color:rgb(140, 206, 228);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 .AUMessage{
     font-size: xx-large;

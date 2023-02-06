@@ -4,7 +4,7 @@ import "./AboutUs.css";
 export const AboutUs = () => {
   return (
     <div className="AboutUs">
-      <div className="Area">
+      <div className="Area bg-gradient-to-r from-cyan-500 to-blue-500">
         <div className="AUMessage">
             About Us
         </div>
@@ -12,7 +12,7 @@ export const AboutUs = () => {
             The "Schedule-a-Doc" group will create a webapp that would ideally be used by a doctor's office and its clients.
         </div>
         <div className="Names">
-            Daniel Lobo Franco Kreppel Richard Mercado Divyanshi Saini
+            Daniel Lobo Franco Krepel Richard Mercado Divyanshi Saini
         </div>
         </div>
     </div>

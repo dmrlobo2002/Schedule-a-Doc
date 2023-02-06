@@ -6,8 +6,8 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <div className="navbar">
-      <div className="NavArea">
+    <div className="navbar ">
+      <div className="NavArea bg-gradient-to-r from-cyan-500 to-blue-500">
         <nav>
           <ul>
             <li>

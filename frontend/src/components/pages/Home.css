@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:rgb(7, 50, 85);
+    background-color:white;
 }
 .Area{
     width: 800px;
@@ -19,7 +19,7 @@
     align-items: left;
     font-size: xx-large;
     margin-bottom: 10px;
-    color: rgb(45, 40, 40) ;
+    color: rgb(45, 40, 40);
 }
 .WelcomeMessage{
     display: flex;
