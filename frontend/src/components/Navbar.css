@@ -1,6 +1,7 @@
 .Navbar{
     justify-content: left;
     align-items: left;
+    display: flex;
 }
 .NavArea{
     margin-top: 0rem;
@@ -11,8 +12,16 @@
     border-radius: 0px;
 }
 .Element{
+    width: 20px;
     padding: 10px;
+    margin: 1px;
+    margin-top: 10px;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: aqua;
     display: inline;
     color: blue;
+    font-size: medium;
     text-decoration: underline;
+    font-weight: bold;
 }
