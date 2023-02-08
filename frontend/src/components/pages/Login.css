@@ -1,4 +1,4 @@
-.Login{
+.signin{
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -27,7 +27,7 @@
     border-radius: 7px;
 } */
 
-.Signin{
+.signinText{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,7 +41,7 @@
     padding: 10px;
 }
 
-.InEmail {
+.inEmail {
     width: 100%;
     height: 50px;
     border-width: 1;
@@ -49,7 +49,7 @@
     border-radius: 10px;
 }
 
-.InPassword {
+.inPassword {
     width: 100%;
     height: 50px;
     border-width: 1;
@@ -72,26 +72,26 @@
     color: aliceblue;
     
 }
-.SignupMessage{
+.signupMessage{
     margin-top: 2rem;
     color: rgb(45, 40, 40);
     
 }
-.SignupButton{
+.signupOption{
     text-decoration-line: underline;
     margin-left: 0.3cm;
     color: aliceblue;
 }
-.SignupButton:hover{
+.signupOption:hover{
     color:darkblue;
 }
 
-.ForgotPassword{
+.forgotPassword{
     text-decoration-line: underline;
     display: flex;
     color: darkblue;
     
 }
-.ForgotPassword:hover{
+.forgotPassword:hover{
     color:aliceblue;
 }
