@@ -30,3 +30,9 @@ Create user model,
 Create appointment model,
 Create a GO server that talks to Mongo with Gin,
 Use Postman to create a user and appointment
+
+## What Issues Were Successful
+Our group successfully completed all issues we set out to solve this sprint. We have a welcome, login, and sign-up page. We are also able to create users and appointments and push them to Mongo via postman. 
+
+## What Issues Were not Successful
+NA
