@@ -1,4 +1,4 @@
-.Signup{
+.signup{
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -8,22 +8,21 @@
     background-color: white;
 }
 
-.BoxOut{
-    
+.outer{
     width: 375px;
     height: 500px;
     background-color:aliceblue;
     padding: 20px;  
     border-radius: 20px; 
 }
-/* .BoxIn{
+/* .inner{
     width: 335px;
     height: 460px;
     background-color:rgb(87, 179, 222);
     padding: 10px;
     border-radius: 7px;
 } */
-.SignupLogo{
+.signupLogo{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,9 +31,11 @@
     margin-top: 10px;
     color: rgb(45, 40, 40) ;
 }
+
 .userInput {
     padding: 10px;
 }
+
 .firstName{
     width: 100%;
     height: 40px;
