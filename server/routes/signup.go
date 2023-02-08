@@ -17,6 +17,7 @@ import (
 var validate = validator.New()
 
 var userCollection *mongo.Collection = OpenCollection(Client, "users")
+var appointmentCollection *mongo.Collection = OpenCollection(Client, "appointments")
 
 // create a user
 func CreateUser(c *gin.Context) {
@@ -69,7 +70,7 @@ func CreateAppointment(c *gin.Context) {
 	}
 	appointment.ID = primitive.NewObjectID()
 
-	result, insertErr := userCollection.InsertOne(ctx, appointment)
+	result, insertErr := appointmentCollection.InsertOne(ctx, appointment)
 	if insertErr != nil {
 		msg := fmt.Sprintf("user item was not created")
 		c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
