@@ -1,4 +1,4 @@
-User stories
+## User stories
 End users: doctors and patients
 Doctors
 As a doctor, I want an app where I can set appointments with my patients so I can attend patients in a timely manner
@@ -19,12 +19,13 @@ Issues:
     A calendar to set appointments
     A search bar where users can find doctors based on their needs
 
-Issues for this sprint:
-Front End
+## Issues for this sprint:
+### Front End
 Welcome Page
 Login Page
 Sign-Up Page
-Back End
+
+### Back End
 Create user model
 Create appointment model
 Create a GO server that talks to Mongo with Gin
