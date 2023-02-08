@@ -21,12 +21,12 @@ Issues:
 
 ## Issues for this sprint:
 ### Front End
-Welcome Page
-Login Page
-Sign-Up Page
+Welcome Page,
+Login Page,
+Sign-Up Page,
 
 ### Back End
-Create user model
-Create appointment model
-Create a GO server that talks to Mongo with Gin
+Create user model,
+Create appointment model,
+Create a GO server that talks to Mongo with Gin,
 Use Postman to create a user and appointment
