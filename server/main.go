@@ -26,6 +26,7 @@ func main() {
 	//C
 	router.POST("/signup", routes.CreateUser)
 	router.POST("/appointment", routes.CreateAppointment)
+	router.POST("/login", routes.Login)
 	//R
 	
 	//U
