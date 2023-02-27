@@ -9,6 +9,7 @@ interface Data {
   phoneNumber: string;
   password: string;
   reEnterPassword: string;
+  isDoctor: boolean | null;
 }
 
 const Signup: React.FC = () => {
@@ -18,8 +19,14 @@ const Signup: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [reEnterPassword, setReEnterPassword] = useState<string>("");
+  const [isDoctor, setIsDoctor] = useState<boolean | null>(null);
 
   const handleSignup = async () => {
+    if (isDoctor === null) {
+      alert("Please select whether you are a doctor or not.");
+      return;
+    }
+
     const data: Data = {
       firstName,
       lastName,
@@ -27,10 +34,10 @@ const Signup: React.FC = () => {
       phoneNumber,
       password,
       reEnterPassword,
+      isDoctor,
     };
 
     try {
-      //make sure to remove console.log, rn it's here for debugging
       console.log(data);
       await axios.post("http://localhost:6001/signup", data);
     } catch (error) {
@@ -82,6 +89,31 @@ const Signup: React.FC = () => {
               value={reEnterPassword}
               onChange={(e) => setReEnterPassword(e.target.value)}
             />
+            <div className="doctorSelection">
+              Are you a doctor?
+              <div>
+                <input
+                  type="radio"
+                  id="yes"
+                  name="isDoctor"
+                  value="yes"
+                  checked={isDoctor === true}
+                  onChange={() => setIsDoctor(true)}
+                />
+                <label htmlFor="yes">Yes</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="no"
+                  name="isDoctor"
+                  value="no"
+                  checked={isDoctor === false}
+                  onChange={() => setIsDoctor(false)}
+                />
+                <label htmlFor="no">No</label>
+              </div>
+            </div>
           </div>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <button className="signupButton" onClick={handleSignup}>
@@ -93,5 +125,4 @@ const Signup: React.FC = () => {
     </div>
   );
 };
-
 export default Signup;

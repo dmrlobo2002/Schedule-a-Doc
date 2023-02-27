@@ -1,19 +1,19 @@
-.signup{
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
+.signup {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 }
 
-.outer{
-    width: 375px;
-    height: 500px;
-    background-color:aliceblue;
-    padding: 20px;  
-    border-radius: 20px; 
+.outer {
+  width: 375px;
+  height: 570px;
+  background-color: aliceblue;
+  padding: 20px;
+  border-radius: 20px;
 }
 /* .inner{
     width: 335px;
@@ -22,80 +22,78 @@
     padding: 10px;
     border-radius: 7px;
 } */
-.signupLogo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: xx-large;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    color: rgb(45, 40, 40) ;
+.signupLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: rgb(45, 40, 40);
 }
 
 .userInput {
-    padding: 10px;
+  padding: 10px;
 }
 
-.firstName{
-    width: 100%;
-    height: 40px;
-    border-width: 1;
-    margin-bottom: 10px;
-    border-radius: 10px;
+.firstName {
+  width: 100%;
+  height: 40px;
+  border-width: 1;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
-.lastName{
-    width: 100%;
-    height: 40px;
-    border-width: 1;
-    margin-bottom: 10px;
-    border-radius: 10px;
+.lastName {
+  width: 100%;
+  height: 40px;
+  border-width: 1;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
 .email {
-    width: 100%;
-    height: 40px;
-    border-width: 1;
-    margin-bottom: 10px;
-    border-radius: 10px;
+  width: 100%;
+  height: 40px;
+  border-width: 1;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
-.phonenumber{
-    width: 100%;
-    height: 40px;
-    border-width: 1;
-    margin-bottom: 10px;
-    border-radius: 10px;
+.phonenumber {
+  width: 100%;
+  height: 40px;
+  border-width: 1;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
 .password {
-    width: 100%;
-    height: 40px;
-    border-width: 1;
-    margin-bottom: 10px;
-    border-radius: 10px;
+  width: 100%;
+  height: 40px;
+  border-width: 1;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
-.renterpassword{
-    width: 100%;
-    height: 40px;
-    border-width: 1;
-    margin-bottom: 15px;
-    border-radius: 10px;
+.renterpassword {
+  width: 100%;
+  height: 40px;
+  border-width: 1;
+  margin-bottom: 15px;
+  border-radius: 10px;
 }
 
-.signupButton{
-    width: 92%;
-    height: 40px;
-    background-color: aliceblue;
-    color: black;
-    font: bold;
-    border-radius: 10px;
-       
+.signupButton {
+  width: 92%;
+  height: 40px;
+  background-color: aliceblue;
+  color: black;
+  font: bold;
+  border-radius: 10px;
 }
 
-.signupButton:hover{
-    background-color: rgb(7, 50, 85);
-    color: aliceblue;
-    
+.signupButton:hover {
+  background-color: rgb(7, 50, 85);
+  color: aliceblue;
 }
