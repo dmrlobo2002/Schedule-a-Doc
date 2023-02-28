@@ -96,7 +96,7 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	// Check if the user exists
+	// Check if the user exists, decode the result into a Go struct.
 	var existingUser models.User
 	err := userCollection.FindOne(ctx, bson.M{"email": user.Email}).Decode(&existingUser)
 	if err != nil {
@@ -104,13 +104,11 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	// Check if the password is correct
+	// Check if the password is correct (remeber to dereference *string)
 	if *user.Password != *existingUser.Password {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Password is incorrect"})
 		return
 	}
-
-	//"Password is incorrect"
 
 	// Generate a JWT token
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
@@ -130,35 +128,3 @@ func Login(c *gin.Context) {
 	// Return the token in the response
 	c.JSON(http.StatusOK, gin.H{"token": tokenString})
 }
-
-// func Login(c *gin.Context) {
-// 	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
-// 	var user models.User
-
-// 	if err := c.BindJSON(&user); err != nil {
-// 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-// 		fmt.Println(err)
-// 		return
-// 	}
-
-// 	var result models.User
-// 	if err := userCollection.FindOne(ctx, bson.M{"email": user.Email}).Decode(&result); err != nil {
-// 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid email"})
-// 		return
-// 	}
-
-// 	if result.Password != user.Password {
-// 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid password"})
-// 		return
-// 	}
-
-// 	// Create token
-// 	tokenString, err := models.CreateToken(result)
-// 	if err != nil {
-// 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not create token"})
-// 		return
-// 	}
-
-// 	defer cancel()
-// 	c.JSON(http.StatusOK, gin.H{"token": tokenString})
-// }
