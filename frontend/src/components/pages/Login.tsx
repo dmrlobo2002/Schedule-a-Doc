@@ -34,7 +34,7 @@ export const Login = () => {
     <div className="signin">
       <div className="outerBox bg-gradient-to-r from-cyan-500 to-blue-500 shadow-2xl">
         <div className="innerBox">
-          <div className="signinText"> Sign in</div>
+          <div className="signinText"> Log in</div>
           <form onSubmit={handleLogin}>
             <div className="inputs">
               <input
