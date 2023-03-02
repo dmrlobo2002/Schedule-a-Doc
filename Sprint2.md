@@ -62,3 +62,91 @@ Our team was successful in integrating the front end and back end, allowing user
 We were not able to create pages that were only accessible to logged-in users or a taskbar that was only accessible to logged-in users. These issues will be addressed in future sprints.
 
 ## Backend Documentation
+
+Using Go-based Backend API in React via Axios
+
+Directory: server
+File: .env
+This file contains the environment variables used in the backend, such as the database connection string, server port, and other configurations. These variables are loaded into the application at runtime using the third-party library `godotenv`. It is important to keep this file secure and not expose it to the public, as well as keep it in the gitignore for version control.
+File: go.mod, go.sum
+These files are used by Go to manage dependencies of the application. go.mod contains a list of required packages, along with their version, while go.sum is used to verify the integrity of those packages. When a new package is added or removed, these files are updated accordingly.
+File: main.go
+This file is the entry point for the backend application. It initializes the server, sets up the database connection, registers the routes and middleware, and starts listening for incoming requests. The main function calls other functions defined in the codebase to set up the application.
+
+In this file, the main function is defined, which is the entry point of the application. It first checks for the environment variable PORT to determine which port the server should listen on. If the PORT environment variable is not set, it defaults to port 8000.
+
+The gin router is then initialized using gin.New(). The gin.Logger() middleware is added to log incoming requests. The cors.Default() middleware is added to handle Cross-Origin Resource Sharing (CORS) requests.
+
+Gin is a web framework for Go language that provides a routing mechanism to handle HTTP requests. A router in Gin is responsible for directing incoming requests to the appropriate handler function based on the request path and method. It defines a set of routes, each of which maps to a specific handler function.
+
+The router in Gin is responsible for matching the incoming request URL with the defined routes and passing control to the appropriate handler function to process the request. This is achieved by registering the handler function with the appropriate HTTP method (GET, POST, PUT, DELETE) and URL pattern using the router's methods.
+
+In the main.go file, the router variable is created using the gin.New() function, which returns a new instance of the Gin router. The router instance is then used to register the endpoints for handling incoming requests, such as /signup, /appointment, and /login. These endpoints correspond to the create user, create appointment, and login functionality respectively.
+Finally, the `router.Run()` method is called to start the HTTP server and listen for incoming requests on the specified port.
+
+
+
+Directory: server/models
+File: appointment.go
+This code defines a struct named Appointment which represents an appointment in the system. The struct has five fields: ID, Date, Category, Patient, Doctor, and IsApproved.
+ID is of type primitive.ObjectID and is mapped to the _id field in MongoDB.
+Date is a pointer to a string and is mapped to the date field in JSON.
+Category is a pointer to a string and is mapped to the category field in JSON.
+Patient is of type primitive.ObjectID and is mapped to the _patientID field in MongoDB.
+Doctor is of type primitive.ObjectID and is mapped to the _doctorID field in MongoDB.
+IsApproved is a pointer to a bool and is mapped to the isDoctor field in JSON.
+The ID field is used to uniquely identify an appointment in the database. The Date field represents the date of the appointment. The Category field represents the category of the appointment, such as "General Checkup" or "Dental". The Patient field represents the patient associated with the appointment, while the Doctor field represents the doctor associated with the appointment. The IsApproved field is used to determine whether the appointment has been approved by the doctor.
+
+File: user.go
+The user.go file defines the User struct and functions for managing users in the backend. It provides functionality for creating, retrieving, updating, and deleting users in the database. This file also defines the MongoDB collection used for storing users. This struct contains the following fields:
+ID: a primitive.ObjectID type that represents the unique identifier of the user in the database. This field is mapped to the "_id" field in MongoDB.
+Email: a pointer to a string that holds the user's email address.
+PhoneNumber: a pointer to a string that holds the user's phone number.
+Password: a pointer to a string that holds the user's password. Note that storing passwords in plain text is not recommended and should be avoided in production environments.
+FirstName: a pointer to a string that holds the user's first name.
+LastName: a pointer to a string that holds the user's last name.
+IsDoctor: a pointer to a boolean that indicates whether the user is a doctor or not.
+The fields in the User struct are mapped to fields in the MongoDB document using BSON tags. The ID field is mapped to the "_id" field in MongoDB, while the other fields are mapped to fields with the same name as the struct field. Note that the Email, PhoneNumber, Password, FirstName, LastName, and IsDoctor fields are all pointers to string or boolean values. This is because these fields can be optional, and we want to be able to distinguish between a missing value and an empty string or false boolean value.
+
+Directory: server/routes
+File: connection.go
+
+The connection.go file contains functions responsible for creating a connection to the MongoDB database and returning a database instance and a collection instance.
+
+The DBinstance function first loads the environment variables using the godotenv package. It then retrieves the MONGODB_URL variable from the loaded environment variables, which should contain the URL for the MongoDB database. A new MongoDB client is created using the mongo.NewClient function, which takes an options struct that contains the URI for the MongoDB database. If there's an error creating the client, the function logs the error and terminates the program.
+
+Next, the function creates a context with a timeout of 10 seconds using context.WithTimeout, which is used to manage the client's lifecycle. The Connect method is then called on the client with the created context, which establishes a connection to the MongoDB database. If there's an error connecting to the database, the function logs the error and terminates the program.
+
+Finally, the function returns the MongoDB client, which can be used to access the database.
+The Client variable is defined as a global variable, which is initialized by calling the DBinstance function. This variable provides a singleton instance of the MongoDB client throughout the application.
+
+The OpenCollection function takes the MongoDB client and the name of the collection as arguments. It retrieves the specified collection from the database by calling client.Database("cluster0").Collection(collectionName). The name of the database "cluster0" is hard-coded in this example, but it can be replaced with an environment variable. The function then returns the collection instance, which can be used to perform CRUD operations on the specified collection.
+
+Overall, the functions in this file provide a simple way to connect to a MongoDB database and retrieve a collection instance. These can be used in other parts of the application to perform database operations.
+
+File: signup.go
+The signup.go file includes code that defines three routes for a server: one for creating a user, another for creating an appointment, and a third for user authentication (login).
+
+The CreateUser() function creates a new user by first binding the incoming JSON request body to a models.User struct. It then validates the user struct using the validator package. If the validation fails, it returns a response with a BadRequest HTTP status code and an error message. Otherwise, it generates a new MongoDB object ID for the user and inserts it into the users collection of the MongoDB database. If the insertion fails, it returns a response with an InternalServerError HTTP status code and an error message. Otherwise, it returns a response with an OK HTTP status code and the result of the insertion.
+
+The CreateAppointment() function creates a new appointment in a similar way to CreateUser(). It binds the incoming JSON request body to a models.Appointment struct, validates it, generates a new MongoDB object ID for the appointment, inserts it into the appointments collection of the MongoDB database, and returns a response with an appropriate HTTP status code and message.
+
+The Login() function handles user authentication. It binds the incoming JSON request body to a models.User struct and checks if a user with the provided email exists in the users collection of the MongoDB database. If it does not exist, it returns a response with a BadRequest HTTP status code and an error message. If the user exists, it checks if the provided password matches the password of the existing user. If it does not match, it returns a response with a BadRequest HTTP status code and an error message. Otherwise, it generates a JSON Web Token (JWT) using the jwt-go package, signs and encodes the token with a secret key, and returns the token in a response with an OK HTTP status code.
+Note that this code uses the gin package to handle HTTP requests and responses, the go.mongodb.org/mongo-driver package to interact with a MongoDB database, and the github.com/go-playground/validator/v10 package to validate input data.
+
+File: connection_test.go
+This file contains unit tests for the database connection. It tests whether the connection is established successfully, whether the database collections are created, and whether queries to the database return expected results. The Go file contains a test function named TestMongoDBConnection. This test function tests whether the application can connect to MongoDB successfully.
+
+The first step of the test function is to set up MongoDB client options using the options.Client().ApplyURI() function, which takes a connection string as an argument. In this case, the connection string is "mongodb+srv://cen3031:cen3031@cluster0.j5xkmde.mongodb.net/?retrxyWrites=true&w=majority".
+
+Next, the test function creates a MongoDB client using the mongo.Connect() function, passing in the clientOptions variable and a context.Background() context. If an error occurs while creating the client, the assert.NoError(t, err) function will fail the test.
+
+The third step is to check whether the connection to MongoDB is successful using the client.Ping() function, which takes a context and options as arguments. If an error occurs while pinging the server, the assert.NoError(t, err) function will fail the test.
+
+Finally, the test disconnects the MongoDB client using the client.Disconnect() function, passing in a context.Background() context. If an error occurs while disconnecting the client, the assert.NoError(t, err) function will fail the test.
+Overall, this test function ensures that the application can connect to the MongoDB server and perform basic operations, such as pinging the server and disconnecting from it.
+
+
+Conclusion
+This documentation provides a comprehensive overview of the files and directories in your backend codebase. It includes information about the purpose and functionality of each file, as well as any third-party libraries or dependencies used. It also covers the database schema and API endpoints used in the backend. With this documentation, developers can easily understand the backend architecture of your web application and make necessary modifications or improvements.
+
