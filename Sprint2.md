@@ -63,12 +63,67 @@ We were not able to create pages that were only accessible to logged-in users or
 
 ## Backend Documentation
 
+### Using the Go-based Backend API in React via Axios
+
+To use the Go-based Backend API in React via Axios, follow the steps below:
+
+1. Install Axios by running npm install axios in your React project directory.
+2. Create a new file called api.js in your React project directory.
+3. Import Axios and define the base URL for your API:
+
+```
+import axios from 'axios';
+
+const API_BASE_URL = 'http://localhost:8000/api';
+```
+
+4. Define functions for each API endpoint you want to use. For example, to create a new user, you can define the following function:
+
+```
+export const createUser = (user) => {
+  return axios.post(`${API_BASE_URL}/signup`, user);
+};
+```
+
+5. Call the API functions from your React components. For example, to create a new user, you can call the createUser function like this:
+
+```
+import { createUser } from './api';
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const user = {
+    email: 'john@example.com',
+    password: 'password123',
+    firstName: 'John',
+    lastName: 'Doe',
+    isDoctor: false,
+  };
+  try {
+    const response = await createUser(user);
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+```
+
+The createUser function is called with a user object as an argument. The function returns a Promise that resolves with the response data from the API. The response data can be accessed in the try block or caught in the catch block if an error occurs.
+
+With these steps you can use our Go-based backend API in React using Axios.
+
 ### Directory: server
+
 #### File: .env
+
 This file contains the environment variables used in the backend, such as the database connection string, server port, and other configurations. These variables are loaded into the application at runtime using the third-party library `godotenv`. It is important to keep this file secure and not expose it to the public, as well as keep it in the gitignore for version control.
+
 ### File: go.mod, go.sum
+
 These files are used by Go to manage dependencies of the application. `go.mod` contains a list of required packages, along with their version, while go.sum is used to verify the integrity of those packages. When a new package is added or removed, these files are updated accordingly.
+
 ### File: main.go
+
 This file is the entry point for the backend application. It initializes the server, sets up the database connection, registers the routes and middleware, and starts listening for incoming requests. The main function calls other functions defined in the codebase to set up the application.
 
 In this file, the main function is defined, which is the entry point of the application. It first checks for the environment variable PORT to determine which port the server should listen on. If the PORT environment variable is not set, it defaults to port 8000.
@@ -82,10 +137,10 @@ The router in Gin is responsible for matching the incoming request URL with the 
 In the main.go file, the router variable is created using the `gin.New()` function, which returns a new instance of the Gin router. The router instance is then used to register the endpoints for handling incoming requests, such as `/signup, /appointment`, and `/login`. These endpoints correspond to the create user, create appointment, and login functionality respectively.
 Finally, the `router.Run()` method is called to start the HTTP server and listen for incoming requests on the specified port.
 
-
-
 ### Directory: server/models
+
 #### File: appointment.go
+
 This code defines a struct named Appointment which represents an appointment in the system. The struct has five fields: `ID, Date, Category, Patient, Doctor, and IsApproved`.
 ID is of type primitive.ObjectID and is mapped to the `_id` field in MongoDB.
 Date is a pointer to a string and is mapped to the `date` field in JSON.
@@ -96,8 +151,10 @@ Doctor is of type `primitive.ObjectID` and is mapped to the `_doctorID` field in
 The `ID` field is used to uniquely identify an appointment in the database. The Date field represents the date of the appointment. The Category field represents the category of the appointment, such as "General Checkup" or "Dental". The Patient field represents the patient associated with the appointment, while the Doctor field represents the doctor associated with the appointment. The IsApproved field is used to determine whether the appointment has been approved by the doctor.
 
 #### File: user.go
+
 The `user.go` file defines the User struct and functions for managing users in the backend. It provides functionality for creating, retrieving, updating, and deleting users in the database. This file also defines the MongoDB colle
 ction used for storing users. This struct contains the following fields:
+
 1. ID: a primitive.ObjectID type that represents the unique identifier of the user in the database. This field is mapped to the `_id` field in MongoDB.
 2. Email: a pointer to a string that holds the user's email address.
 3. PhoneNumber: a pointer to a string that holds the user's phone number.
@@ -105,9 +162,10 @@ ction used for storing users. This struct contains the following fields:
 5. FirstName: a pointer to a string that holds the user's first name.
 6. LastName: a pointer to a string that holds the user's last name.
 7. IsDoctor: a pointer to a boolean that indicates whether the user is a doctor or not.
-The fields in the User struct are mapped to fields in the MongoDB document using BSON tags. The ID field is mapped to the `_id` field in MongoDB, while the other fields are mapped to fields with the same name as the struct field. Note that the Email, PhoneNumber, Password, FirstName, LastName, and IsDoctor fields are all pointers to string or boolean values. This is because these fields can be optional, and we want to be able to distinguish between a missing value and an empty string or false boolean value.
+   The fields in the User struct are mapped to fields in the MongoDB document using BSON tags. The ID field is mapped to the `_id` field in MongoDB, while the other fields are mapped to fields with the same name as the struct field. Note that the Email, PhoneNumber, Password, FirstName, LastName, and IsDoctor fields are all pointers to string or boolean values. This is because these fields can be optional, and we want to be able to distinguish between a missing value and an empty string or false boolean value.
 
 ### Directory: server/routes
+
 #### File: connection.go
 
 The connection.go file contains functions responsible for creating a connection to the MongoDB database and returning a database instance and a collection instance.
@@ -124,6 +182,7 @@ The OpenCollection function takes the MongoDB client and the name of the collect
 Overall, the functions in this file provide a simple way to connect to a MongoDB database and retrieve a collection instance. These can be used in other parts of the application to perform database operations.
 
 ### File: signup.go
+
 The signup.go file includes code that defines three routes for a server: one for creating a user, another for creating an appointment, and a third for user authentication (login).
 
 The CreateUser() function creates a new user by first binding the incoming JSON request body to a models.User struct. It then validates the user struct using the validator package. If the validation fails, it returns a response with a BadRequest HTTP status code and an error message. Otherwise, it generates a new MongoDB object ID for the user and inserts it into the users collection of the MongoDB database. If the insertion fails, it returns a response with an InternalServerError HTTP status code and an error message. Otherwise, it returns a response with an OK HTTP status code and the result of the insertion.
@@ -134,6 +193,7 @@ The Login() function handles user authentication. It binds the incoming JSON req
 Note that this code uses the gin package to handle HTTP requests and responses, the go.mongodb.org/mongo-driver package to interact with a MongoDB database, and the github.com/go-playground/validator/v10 package to validate input data.
 
 ### File: connection_test.go
+
 This file contains unit tests for the database connection. It tests whether the connection is established successfully, whether the database collections are created, and whether queries to the database return expected results. The Go file contains a test function named TestMongoDBConnection. This test function tests whether the application can connect to MongoDB successfully.
 
 The first step of the test function is to set up MongoDB client options using the options.Client().ApplyURI() function, which takes a connection string as an argument. In this case, the connection string is "mongodb+srv://cen3031:cen3031@cluster0.j5xkmde.mongodb.net/?retrxyWrites=true&w=majority".
@@ -145,7 +205,6 @@ The third step is to check whether the connection to MongoDB is successful using
 Finally, the test disconnects the MongoDB client using the client.Disconnect() function, passing in a context.Background() context. If an error occurs while disconnecting the client, the assert.NoError(t, err) function will fail the test.
 Overall, this test function ensures that the application can connect to the MongoDB server and perform basic operations, such as pinging the server and disconnecting from it.
 
-
 #### Conclusion
-This documentation provides a comprehensive overview of the files and directories in your backend codebase. It includes information about the purpose and functionality of each file, as well as any third-party libraries or dependencies used. It also covers the database schema and API endpoints used in the backend. With this documentation, developers can easily understand the backend architecture of your web application and make necessary modifications or improvements.
 
+This documentation provides a comprehensive overview of the files and directories in your backend codebase. It includes information about the purpose and functionality of each file, as well as any third-party libraries or dependencies used. It also covers the database schema and API endpoints used in the backend. With this documentation, developers can easily understand the backend architecture of your web application and make necessary modifications or improvements.
