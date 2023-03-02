@@ -191,7 +191,7 @@ The `signup.go` file includes code that defines three routes for a server: one f
 2. The `CreateAppointment()` function creates a new appointment in a similar way to CreateUser(). It binds the incoming JSON request body to a models.Appointment struct, validates it, generates a new MongoDB object ID for the appointment, inserts it into the appointments collection of the MongoDB database, and returns a response with an appropriate HTTP status code and message.
 
 3. The `Login()` function handles user authentication. It binds the incoming JSON request body to a `models.User` struct and checks if a user with the provided email exists in the users collection of the MongoDB database. If it does not exist, it returns a response with a `BadRequest` HTTP status code and an error message. If the user exists, it checks if the provided password matches the password of the existing user. If it does not match, it returns a response with a `BadRequest` HTTP status code and an error message. Otherwise, it generates a JSON Web Token (JWT) using the `jwt-go` package, signs and encodes the token with a secret key, and returns the token in a response with an `OK` HTTP status code.
-   Note that this code uses the gin package to handle HTTP requests and responses, the `go.mongodb.org/mongo-driver` package to interact with a MongoDB database, and the g`ithub.com/go-playground/validator/v10` package to validate input data.
+   Note that this code uses the gin package to handle HTTP requests and responses, the `go.mongodb.org/mongo-driver` package to interact with a MongoDB database, and the `github.com/go-playground/validator/v10` package to validate input data.
 
 ### File: connection_test.go
 
