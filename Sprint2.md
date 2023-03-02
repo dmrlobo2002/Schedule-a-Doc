@@ -86,30 +86,31 @@ Finally, the `router.Run()` method is called to start the HTTP server and listen
 
 
 
-Directory: server/models
-File: appointment.go
-This code defines a struct named Appointment which represents an appointment in the system. The struct has five fields: ID, Date, Category, Patient, Doctor, and IsApproved.
-ID is of type primitive.ObjectID and is mapped to the _id field in MongoDB.
-Date is a pointer to a string and is mapped to the date field in JSON.
+### Directory: server/models
+#### File: appointment.go
+This code defines a struct named Appointment which represents an appointment in the system. The struct has five fields: `ID, Date, Category, Patient, Doctor, and IsApproved`.
+ID is of type primitive.ObjectID and is mapped to the `_id` field in MongoDB.
+Date is a pointer to a string and is mapped to the `date` field in JSON.
 Category is a pointer to a string and is mapped to the category field in JSON.
-Patient is of type primitive.ObjectID and is mapped to the _patientID field in MongoDB.
-Doctor is of type primitive.ObjectID and is mapped to the _doctorID field in MongoDB.
-IsApproved is a pointer to a bool and is mapped to the isDoctor field in JSON.
-The ID field is used to uniquely identify an appointment in the database. The Date field represents the date of the appointment. The Category field represents the category of the appointment, such as "General Checkup" or "Dental". The Patient field represents the patient associated with the appointment, while the Doctor field represents the doctor associated with the appointment. The IsApproved field is used to determine whether the appointment has been approved by the doctor.
+Patient is of type `primitive.ObjectID` and is mapped to the `_patientID` field in MongoDB.
+Doctor is of type `primitive.ObjectID` and is mapped to the `_doctorID` field in MongoDB.
+`IsApproved` is a pointer to a bool and is mapped to the isDoctor field in JSON.
+The `ID` field is used to uniquely identify an appointment in the database. The Date field represents the date of the appointment. The Category field represents the category of the appointment, such as "General Checkup" or "Dental". The Patient field represents the patient associated with the appointment, while the Doctor field represents the doctor associated with the appointment. The IsApproved field is used to determine whether the appointment has been approved by the doctor.
 
-File: user.go
-The user.go file defines the User struct and functions for managing users in the backend. It provides functionality for creating, retrieving, updating, and deleting users in the database. This file also defines the MongoDB collection used for storing users. This struct contains the following fields:
-ID: a primitive.ObjectID type that represents the unique identifier of the user in the database. This field is mapped to the "_id" field in MongoDB.
+#### File: user.go
+The `user.go` file defines the User struct and functions for managing users in the backend. It provides functionality for creating, retrieving, updating, and deleting users in the database. This file also defines the MongoDB colle
+ction used for storing users. This struct contains the following fields:
+ID: a primitive.ObjectID type that represents the unique identifier of the user in the database. This field is mapped to the `_id` field in MongoDB.
 Email: a pointer to a string that holds the user's email address.
 PhoneNumber: a pointer to a string that holds the user's phone number.
 Password: a pointer to a string that holds the user's password. Note that storing passwords in plain text is not recommended and should be avoided in production environments.
 FirstName: a pointer to a string that holds the user's first name.
 LastName: a pointer to a string that holds the user's last name.
 IsDoctor: a pointer to a boolean that indicates whether the user is a doctor or not.
-The fields in the User struct are mapped to fields in the MongoDB document using BSON tags. The ID field is mapped to the "_id" field in MongoDB, while the other fields are mapped to fields with the same name as the struct field. Note that the Email, PhoneNumber, Password, FirstName, LastName, and IsDoctor fields are all pointers to string or boolean values. This is because these fields can be optional, and we want to be able to distinguish between a missing value and an empty string or false boolean value.
+The fields in the User struct are mapped to fields in the MongoDB document using BSON tags. The ID field is mapped to the `_id` field in MongoDB, while the other fields are mapped to fields with the same name as the struct field. Note that the Email, PhoneNumber, Password, FirstName, LastName, and IsDoctor fields are all pointers to string or boolean values. This is because these fields can be optional, and we want to be able to distinguish between a missing value and an empty string or false boolean value.
 
-Directory: server/routes
-File: connection.go
+### Directory: server/routes
+#### File: connection.go
 
 The connection.go file contains functions responsible for creating a connection to the MongoDB database and returning a database instance and a collection instance.
 
@@ -124,7 +125,7 @@ The OpenCollection function takes the MongoDB client and the name of the collect
 
 Overall, the functions in this file provide a simple way to connect to a MongoDB database and retrieve a collection instance. These can be used in other parts of the application to perform database operations.
 
-File: signup.go
+### File: signup.go
 The signup.go file includes code that defines three routes for a server: one for creating a user, another for creating an appointment, and a third for user authentication (login).
 
 The CreateUser() function creates a new user by first binding the incoming JSON request body to a models.User struct. It then validates the user struct using the validator package. If the validation fails, it returns a response with a BadRequest HTTP status code and an error message. Otherwise, it generates a new MongoDB object ID for the user and inserts it into the users collection of the MongoDB database. If the insertion fails, it returns a response with an InternalServerError HTTP status code and an error message. Otherwise, it returns a response with an OK HTTP status code and the result of the insertion.
@@ -134,7 +135,7 @@ The CreateAppointment() function creates a new appointment in a similar way to C
 The Login() function handles user authentication. It binds the incoming JSON request body to a models.User struct and checks if a user with the provided email exists in the users collection of the MongoDB database. If it does not exist, it returns a response with a BadRequest HTTP status code and an error message. If the user exists, it checks if the provided password matches the password of the existing user. If it does not match, it returns a response with a BadRequest HTTP status code and an error message. Otherwise, it generates a JSON Web Token (JWT) using the jwt-go package, signs and encodes the token with a secret key, and returns the token in a response with an OK HTTP status code.
 Note that this code uses the gin package to handle HTTP requests and responses, the go.mongodb.org/mongo-driver package to interact with a MongoDB database, and the github.com/go-playground/validator/v10 package to validate input data.
 
-File: connection_test.go
+### File: connection_test.go
 This file contains unit tests for the database connection. It tests whether the connection is established successfully, whether the database collections are created, and whether queries to the database return expected results. The Go file contains a test function named TestMongoDBConnection. This test function tests whether the application can connect to MongoDB successfully.
 
 The first step of the test function is to set up MongoDB client options using the options.Client().ApplyURI() function, which takes a connection string as an argument. In this case, the connection string is "mongodb+srv://cen3031:cen3031@cluster0.j5xkmde.mongodb.net/?retrxyWrites=true&w=majority".
@@ -147,6 +148,6 @@ Finally, the test disconnects the MongoDB client using the client.Disconnect() f
 Overall, this test function ensures that the application can connect to the MongoDB server and perform basic operations, such as pinging the server and disconnecting from it.
 
 
-Conclusion
+#### Conclusion
 This documentation provides a comprehensive overview of the files and directories in your backend codebase. It includes information about the purpose and functionality of each file, as well as any third-party libraries or dependencies used. It also covers the database schema and API endpoints used in the backend. With this documentation, developers can easily understand the backend architecture of your web application and make necessary modifications or improvements.
 
