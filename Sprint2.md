@@ -48,8 +48,8 @@ We created a unit test case for the backend of the web application. Here are the
 This test case verifies that the Go backend is able to connect to the MongoDB database. Here are the steps involved:
 
 1. Set up the client options for connecting to a MongoDB Atlas cluster hosted on `mongodb+srv://cluster0.j5xkmde.mongodb.net` using a username and password of `cen3031`.
-2. Create a MongoDB client by calling the mongo.Connect function and passing in the client options.
-3. Check the connection to the MongoDB database by calling the Ping method on the client and passing in a nil context.
+2. Create a MongoDB client by calling the `mongo.Connect` function and passing in the client options.
+3. Check the connection to the MongoDB database by calling the `Ping` method on the client and passing in a nil context.
 4. Disconnect the MongoDB client by calling the Disconnect method on the client.
 5. Use the assert.NoError function to check if there were any errors while connecting, pinging, or disconnecting the MongoDB client. If there were no errors, the test passes. If there were any errors, the test fails and outputs the error message.
 
