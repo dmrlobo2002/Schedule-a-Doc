@@ -27,3 +27,9 @@ Franco Krepel
 Richard Mercado
 
 Divyanshi Saini
+
+
+
+
+### REMINDERS TO SELF
+1. regex to make email all lowercase
