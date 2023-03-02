@@ -63,25 +63,23 @@ We were not able to create pages that were only accessible to logged-in users or
 
 ## Backend Documentation
 
-Using Go-based Backend API in React via Axios
-
-Directory: server
-File: .env
+### Directory: server
+#### File: .env
 This file contains the environment variables used in the backend, such as the database connection string, server port, and other configurations. These variables are loaded into the application at runtime using the third-party library `godotenv`. It is important to keep this file secure and not expose it to the public, as well as keep it in the gitignore for version control.
-File: go.mod, go.sum
-These files are used by Go to manage dependencies of the application. go.mod contains a list of required packages, along with their version, while go.sum is used to verify the integrity of those packages. When a new package is added or removed, these files are updated accordingly.
-File: main.go
+### File: go.mod, go.sum
+These files are used by Go to manage dependencies of the application. `go.mod` contains a list of required packages, along with their version, while go.sum is used to verify the integrity of those packages. When a new package is added or removed, these files are updated accordingly.
+### File: main.go
 This file is the entry point for the backend application. It initializes the server, sets up the database connection, registers the routes and middleware, and starts listening for incoming requests. The main function calls other functions defined in the codebase to set up the application.
 
 In this file, the main function is defined, which is the entry point of the application. It first checks for the environment variable PORT to determine which port the server should listen on. If the PORT environment variable is not set, it defaults to port 8000.
 
-The gin router is then initialized using gin.New(). The gin.Logger() middleware is added to log incoming requests. The cors.Default() middleware is added to handle Cross-Origin Resource Sharing (CORS) requests.
+The gin router is then initialized using `gin.New()`. The `gin.Logger()` middleware is added to log incoming requests. The `cors.Default()` middleware is added to handle Cross-Origin Resource Sharing (CORS) requests.
 
 Gin is a web framework for Go language that provides a routing mechanism to handle HTTP requests. A router in Gin is responsible for directing incoming requests to the appropriate handler function based on the request path and method. It defines a set of routes, each of which maps to a specific handler function.
 
 The router in Gin is responsible for matching the incoming request URL with the defined routes and passing control to the appropriate handler function to process the request. This is achieved by registering the handler function with the appropriate HTTP method (GET, POST, PUT, DELETE) and URL pattern using the router's methods.
 
-In the main.go file, the router variable is created using the gin.New() function, which returns a new instance of the Gin router. The router instance is then used to register the endpoints for handling incoming requests, such as /signup, /appointment, and /login. These endpoints correspond to the create user, create appointment, and login functionality respectively.
+In the main.go file, the router variable is created using the `gin.New()` function, which returns a new instance of the Gin router. The router instance is then used to register the endpoints for handling incoming requests, such as `/signup, /appointment`, and `/login`. These endpoints correspond to the create user, create appointment, and login functionality respectively.
 Finally, the `router.Run()` method is called to start the HTTP server and listen for incoming requests on the specified port.
 
 
@@ -100,13 +98,13 @@ The `ID` field is used to uniquely identify an appointment in the database. The 
 #### File: user.go
 The `user.go` file defines the User struct and functions for managing users in the backend. It provides functionality for creating, retrieving, updating, and deleting users in the database. This file also defines the MongoDB colle
 ction used for storing users. This struct contains the following fields:
-ID: a primitive.ObjectID type that represents the unique identifier of the user in the database. This field is mapped to the `_id` field in MongoDB.
-Email: a pointer to a string that holds the user's email address.
-PhoneNumber: a pointer to a string that holds the user's phone number.
-Password: a pointer to a string that holds the user's password. Note that storing passwords in plain text is not recommended and should be avoided in production environments.
-FirstName: a pointer to a string that holds the user's first name.
-LastName: a pointer to a string that holds the user's last name.
-IsDoctor: a pointer to a boolean that indicates whether the user is a doctor or not.
+1. ID: a primitive.ObjectID type that represents the unique identifier of the user in the database. This field is mapped to the `_id` field in MongoDB.
+2. Email: a pointer to a string that holds the user's email address.
+3. PhoneNumber: a pointer to a string that holds the user's phone number.
+4. Password: a pointer to a string that holds the user's password. Note that storing passwords in plain text is not recommended and should be avoided in production environments.
+5. FirstName: a pointer to a string that holds the user's first name.
+6. LastName: a pointer to a string that holds the user's last name.
+7. IsDoctor: a pointer to a boolean that indicates whether the user is a doctor or not.
 The fields in the User struct are mapped to fields in the MongoDB document using BSON tags. The ID field is mapped to the `_id` field in MongoDB, while the other fields are mapped to fields with the same name as the struct field. Note that the Email, PhoneNumber, Password, FirstName, LastName, and IsDoctor fields are all pointers to string or boolean values. This is because these fields can be optional, and we want to be able to distinguish between a missing value and an empty string or false boolean value.
 
 ### Directory: server/routes
