@@ -27,11 +27,15 @@ export const PatientDashboard = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Welcome, {user.firstName}!</h1>
-      <p>Email: {user.email}</p>
-      <p>Is doctor: {user.isDoctor ? "Yes" : "No"}</p>
-    </div>
+    <main className="text-center p-5">
+        <section>
+            <div className="">
+                <h2 className="py-5 text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-400">
+                    Welcome, <span className="bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">{user.firstName} {user.lastName}</span>, to your {user.isDoctor ? "Doctor" : "Patient"} Dashboard
+                </h2>
+            </div>
+        </section>
+    </main>
   );
 };
 

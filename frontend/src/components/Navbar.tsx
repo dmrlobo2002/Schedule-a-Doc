@@ -7,7 +7,7 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <div className="navbar ">
-      <div className="NavArea bg-gradient-to-r from-cyan-500 to-blue-500">
+      <div className="NavArea bg-gradient-to-r from-blue-400 to-teal-400">
         <nav>
           <ul>
             <li>
@@ -29,6 +29,11 @@ const Navbar = () => {
               <Link to="/AboutUS" className="nav-bar-element">
                 <div className="Element">
                   About Us
+                </div>
+                </Link>
+              <Link to="/Dashboard" className="nav-bar-element">
+                <div className="Element">
+                  Dashboard
                 </div>
                 </Link>
             </li>

@@ -3,12 +3,13 @@ import "./App.css";
 import { render } from "@testing-library/react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./components/pages/Home";
-import Error from "./components/pages/Error";
-import Login from "./components/pages/Login";
-import Signup from "./components/pages/Signup";
-import AboutUs from "./components/pages/AboutUs";
-import PatientDashboard from "./components/pages/PatientDashboard";
+import Home from "./pages/Home";
+import Error from "./pages/Error";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import AboutUs from "./pages/AboutUs";
+import Dashboard from "./pages/Dashboard";
+import PatientDashboard from "./pages/PatientDashboard";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/patient-dashboard" element={<PatientDashboard />} />
         </Routes>
       </div>
