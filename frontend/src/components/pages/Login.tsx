@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-//import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 
 export const Login = () => {
- // const history = useHistory();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,13 +21,22 @@ export const Login = () => {
         }
       );
       if (response.status === 200) {
-        localStorage.setItem("token", response.data.token);
-        //history.push("/");
+        // destructure the token and isDoctor properties from the response.data object
+        //remember that login returns the object?
+        const { token, isDoctor} = response.data
+        localStorage.setItem("token", token);
+        if (isDoctor) {
+          navigate("/Home");
+        } else {
+          navigate("/patient-dashboard")
+        }
       }
     } catch (error) {
       console.error(error);
     }
   };
+
+  
   
 
   return (

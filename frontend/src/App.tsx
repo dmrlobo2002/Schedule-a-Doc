@@ -8,6 +8,7 @@ import Error from "./components/pages/Error";
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
 import AboutUs from "./components/pages/AboutUs";
+import PatientDashboard from "./components/pages/PatientDashboard";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/patient-dashboard" element={<PatientDashboard />} />
         </Routes>
       </div>
     </>

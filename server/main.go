@@ -17,10 +17,20 @@ func main() {
 		port = "8000"
 	}
 
-	router := gin.New()
-	router.Use(gin.Logger())
+	// router := gin.New()
+	// router.Use(gin.Logger())
+	// router.Use(cors.Default())
 
-	router.Use(cors.Default())
+	//server is not configured to allow cross-origin requests from your frontend application.
+	//need to configure your server to allow cross-origin requests with the Authorization header.
+	//this is for using authorization header when GET request using token info
+
+	router := gin.Default()
+	// Set up CORS middleware
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"http://localhost:3000"}
+	config.AllowHeaders = []string{"Authorization", "Content-Type"}
+	router.Use(cors.New(config))
 
 	// these are the endpoints
 	//C
@@ -28,9 +38,9 @@ func main() {
 	router.POST("/appointment", routes.CreateAppointment)
 	router.POST("/login", routes.Login)
 	//R
-	
+	router.GET("/user-properties", routes.GetUserProperties)
 	//U
-	
+
 	//D
 
 	//this runs the server and allows it to listen to requests.
