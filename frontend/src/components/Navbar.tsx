@@ -12,30 +12,23 @@ const Navbar = () => {
           <ul>
             <li>
               <Link to="/" className="nav-bar-element">
-                <div className="Element">
-                  Home
-                </div>
+                <div className="Element">Home</div>
               </Link>
               <Link to="/login" className="nav-bar-element">
-                <div className="Element">
-                  Login
-                </div> 
+                <div className="Element">Login</div>
               </Link>
               <Link to="/signup" className="nav-bar-element">
-              <div className="Element">
-                Sign up
-              </div>
+                <div className="Element">Sign up</div>
               </Link>
               <Link to="/AboutUS" className="nav-bar-element">
-                <div className="Element">
-                  About Us
-                </div>
-                </Link>
+                <div className="Element">About Us</div>
+              </Link>
               <Link to="/Dashboard" className="nav-bar-element">
-                <div className="Element">
-                  Dashboard
-                </div>
-                </Link>
+                <div className="Element">Dashboard</div>
+              </Link>
+              <Link to="/scheduling" className="nav-bar-element">
+                <div className="Element">Scheduling</div>
+              </Link>
             </li>
           </ul>
         </nav>

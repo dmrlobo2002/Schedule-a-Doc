@@ -10,6 +10,8 @@ import Signup from "./pages/Signup";
 import AboutUs from "./pages/AboutUs";
 import Dashboard from "./pages/Dashboard";
 import PatientDashboard from "./pages/PatientDashboard";
+import DoctorScheduling from "./pages/DoctorDashboard";
+import PatientScheduling from "./pages/PatientDashboard";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/patient-dashboard" element={<PatientDashboard />} />
+          <Route path="/PatientScheduling" element={<DoctorScheduling />} />
+          <Route path="/DoctorScheduling" element={<PatientScheduling />} />
         </Routes>
       </div>
     </>

@@ -13,18 +13,15 @@ export const Login = () => {
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:6001/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("http://localhost:6001/login", {
+        email,
+        password,
+      });
       if (response.status === 200) {
         // destructure the token and isDoctor properties from the response.data object
         //remember that login returns the object?
         localStorage.setItem("token", response.data.token);
-        navigate("/Dashboard")
+        navigate("/Dashboard");
         //commented out as now all the rerouting to doctor dashboard or patient dashboard will be held by Dashboard
         // if (isDoctor) {
         //   navigate("/Home");
@@ -36,9 +33,6 @@ export const Login = () => {
       console.error(error);
     }
   };
-
-  
-  
 
   return (
     <div className="signin">
