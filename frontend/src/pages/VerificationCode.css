@@ -1,0 +1,27 @@
+.VerificationCode{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+.VCmessage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    color: rgb(45, 40, 40);
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+.vcprompt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: normal;
+    color: rgb(45, 40, 40);
+    margin-bottom: 20px;
+    margin-top: 15px;
+}

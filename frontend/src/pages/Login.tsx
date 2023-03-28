@@ -73,7 +73,9 @@ export const Login = () => {
             className="FP"
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <button className="forgotPassword"> Forgot Password? </button>
+            <Link to={"/ForgotPassword"}>
+              <button className="forgotPassword"> Forgot Password? </button>
+            </Link>
           </div>
         </div>
       </div>
