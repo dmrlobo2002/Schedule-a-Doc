@@ -163,3 +163,7 @@ func GetUserProperties(c *gin.Context) {
 	// Return the user properties in the response
 	c.JSON(http.StatusOK, gin.H{"email": user.Email, "phoneNumber": user.PhoneNumber, "firstName": user.FirstName, "lastName": user.LastName, "isDoctor": user.IsDoctor})
 }
+
+func GetDoctors(c* gin.Context) {
+
+}

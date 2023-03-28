@@ -39,6 +39,7 @@ func main() {
 	router.POST("/login", routes.Login)
 	//R
 	router.GET("/user-properties", routes.GetUserProperties)
+	router.GET("/doctors")
 	//U
 
 	//D
