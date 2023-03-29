@@ -252,9 +252,16 @@ The `signup.go` file includes code that defines three routes for a server: one f
 
 ### File: connection_test.go
 
-This file contains unit tests for the database connection. It tests whether the connection is established successfully, whether the database collections are created, and whether queries to the database return expected results. The Go file contains a test function named `TestMongoDBConnection`. This test function tests whether the application can connect to MongoDB successfully.
+This file contains unit tests for the database connection, user creation, appointment creation, and retrieving user properties. It tests whether the connection is established successfully, whether the database collections are created, and whether queries to the database return expected results. The Go file contains the following test functions:
 
-The first step of the test function is to set up MongoDB client options using the `options.Client().ApplyURI()` function, which takes a connection string as an argument. In this case, the connection string is `"mongodb+srv://cen3031:cen3031@cluster0.j5xkmde.mongodb.net/?retrxyWrites=true&w=majority"`.
+- `TestMongoDBConnection`: tests whether the application can connect to MongoDB successfully.
+- `TestCreateUser`: tests whether a user can be created through the `routes.CreateUser` API endpoint.
+- `TestCreateAppointment`: tests whether an appointment can be created through the `routes.CreateAppointment` API endpoint.
+- `TestGetUserProperties`: tests whether user properties can be retrieved through the `routes.GetUserProperties` API endpoint.
+
+#### `TestMongoDBConnection`
+
+The first step of the `TestMongoDBConnection` test function is to set up MongoDB client options using the `options.Client().ApplyURI()` function, which takes a connection string as an argument. In this case, the connection string is `"mongodb+srv://cen3031:cen3031@cluster0.j5xkmde.mongodb.net/?retrxyWrites=true&w=majority"`.
 
 Next, the test function creates a MongoDB client using the `mongo.Connect()` function, passing in the `clientOptions` variable and a `context.Background()` context. If an error occurs while creating the client, the `assert.NoError(t, err)` function will fail the test.
 
@@ -262,3 +269,40 @@ The third step is to check whether the connection to MongoDB is successful using
 
 Finally, the test disconnects the MongoDB client using the client.`Disconnect()` function, passing in a `context.Background()` context. If an error occurs while disconnecting the client, the `assert.NoError(t, err)` function will fail the test.
 Overall, this test function ensures that the application can connect to the MongoDB server and perform basic operations, such as pinging the server and disconnecting from it.
+
+#### `TestCreateUser`
+
+The `TestCreateUser` test function tests whether a user can be created through the `routes.CreateUser` API endpoint. The test function does the following:
+
+1. Creates a MongoDB client and a `userCollection` variable for the "users" collection.
+2. Creates a `gin` router and adds the `routes.CreateUser` API endpoint to it.
+3. Creates a JSON string representing a new user.
+4. Sends a `POST` request to the `routes.CreateUser` endpoint with the JSON string as the request body.
+5. Checks that the response status code is `http.StatusOK`.
+6. Checks that the user was created by querying the `userCollection` for the newly created user with the email "newuser@example.com".
+7. Deletes the test user from the `userCollection`.
+
+#### `TestCreateAppointment`
+
+The `TestCreateAppointment` test function tests whether an appointment can be created through the `routes.CreateAppointment` API endpoint. The test function does the following:
+
+1. Creates a MongoDB client and an `appointmentCollection` variable for the "appointments" collection.
+2. Creates a `gin` router and adds the `routes.CreateAppointment` API endpoint to it.
+3. Creates a JSON string representing a new appointment.
+4. Sends a `POST` request to the `routes.CreateAppointment` endpoint with the JSON string as the request body.
+5. Checks that the response status code is `http.StatusOK`.
+6. Checks that the appointment was created by querying the `appointmentCollection` for the newly created appointment with the date "2023-04-15T10:30:00Z".
+7. Deletes the test appointment from the appointmentCollection.
+
+`TestGetUserProperties`
+The `TestGetUserProperties` test function tests whether user properties can be retrieved through the routes.GetUserProperties API endpoint. The test function does the following:
+
+1. Creates a MongoDB client and a userCollection variable for the "users" collection.
+2. Creates a gin router and adds the routes.GetUserProperties API endpoint to it.
+3. Creates a test user using the createTestUser helper function.
+4. Creates a test user token using the createTestUserToken helper function.
+5. Sends a GET request to the routes.GetUserProperties endpoint with the test user token in the Authorization header.
+6. Checks that the response status code is http.StatusOK.
+7. Unmarshals the response body into a map of user properties.
+8. Asserts that the retrieved user properties match the properties of the test user created in step 3.
+9. Deletes the test user from the userCollection.
