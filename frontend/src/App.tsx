@@ -12,6 +12,9 @@ import Dashboard from "./pages/Dashboard";
 import PatientDashboard from "./pages/PatientDashboard";
 // import DoctorScheduling from "./pages/DoctorScheduling";
 import PatientScheduling from "./pages/PatientScheduling";
+import ForgotPassword from "./pages/ForgotPassword";
+import VerificationCode from "./pages/VerificationCode";
+import { PasswordReset } from "./pages/PasswordReset";
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
           <Route path="/Signup" element={<Signup />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/VerificationCode" element={<VerificationCode />} />
+          <Route path="/ForgotPassword" element={<ForgotPassword />} />
+          <Route path="/PasswordReset" element={<PasswordReset />} />
           <Route path="/patient-dashboard" element={<PatientDashboard />} />
           {/* <Route path="/DoctorScheduling" element={<DoctorScheduling />} /> */}
           <Route path="/PatientScheduling" element={<PatientScheduling />} />
