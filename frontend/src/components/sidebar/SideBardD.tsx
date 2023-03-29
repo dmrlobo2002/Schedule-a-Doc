@@ -64,7 +64,7 @@ export const SideBar = () => {
                     </li>
                     <li className="list">
                         <RuleRoundedIcon className="icon"/>
-                        <span> Appointement Requests</span>
+                        <span> Appointment Requests</span>
                     </li>
                     <p className="titleUser"> USER </p>
                     <li className="list">
