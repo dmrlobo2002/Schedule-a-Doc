@@ -16,12 +16,12 @@
     padding: 10px;
     margin: 1px;
     margin-top: 10px;
-    outline-style: solid;
-    outline-width: 1px;
-    outline-color: aqua;
+    /* outline-style: solid; */
+    /* outline-width: 1px; */
+    /* outline-color: aqua; */
     display: inline;
     color: white;
     font-size: medium;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     font-weight: bold;
 }
