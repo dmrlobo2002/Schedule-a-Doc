@@ -212,3 +212,41 @@ func GetAppointmentsByDoctor(c *gin.Context) {
 	// Return the appointments in the response
 	c.JSON(http.StatusOK, gin.H{"appointments": appointments})
 }
+
+
+// func GetAllDoctors(c *gin.Context) {
+//     // Create a new MongoDB context with a timeout of 10 seconds
+//     ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+//     defer cancel()
+
+//     // Define a filter to find all users with isDoctor set to true
+//     filter := bson.M{"isDoctor": true}
+
+//     // Find all matching users
+//     cur, err := userCollection.Find(ctx, filter)
+//     if err != nil {
+//         c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve doctors"})
+//         return
+//     }
+
+//     // Iterate through the results and append them to a slice
+//     var doctors []models.User
+//     for cur.Next(ctx) {
+//         var doctor models.User
+//         err := cur.Decode(&doctor)
+//         if err != nil {
+//             c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to decode doctor data"})
+//             return
+//         }
+//         doctors = append(doctors, doctor)
+//     }
+
+//     // Check if there were any decoding errors
+//     if err := cur.Err(); err != nil {
+//         c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve doctors"})
+//         return
+//     }
+
+//     // Return the slice of doctors as a JSON response
+//     c.JSON(http.StatusOK, gin.H{"doctors": doctors})
+// }
