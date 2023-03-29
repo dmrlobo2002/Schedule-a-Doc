@@ -1,24 +1,25 @@
 import "./VerificationCode.css"
-import React, { useState } from "react";
+import React, { HtmlHTMLAttributes, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 export const VerificationCode = () =>{
     const navigate =  useNavigate();
-    const [verificationNumber, setVerificationNumber] = useState("");
-    const handleVC = async (e: React.FormEvent<HTMLFormElement>) =>{
-        e.preventDefault();
-        try{
-            const response = await axios.post("http://localhost:6001/VerificationCode", {
-              verificationNumber,
-            });
-            if(verificationNumber === "123"){
-                navigate("/passwordReset");
-            }
-        }
-        catch (error) {
-            console.error(error);
-        }
+    const expectedCode = 1234;
+    const [code, setCode] = useState("");
+    const [verificationResult, setVerificationResult] = useState("");
+    const handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCode(event.target.value);
+      };
+    
+    const handleVerificationCheck = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (code === expectedCode.toString()) {
+            alert("Verification successful!");
+            navigate("/PasswordReset");    
+          } else {
+            alert("Verification failed. Please try again.");
+          }
     };
     return (
         <div className ="VerificationCode">
@@ -30,19 +31,17 @@ export const VerificationCode = () =>{
                     <div className = "vcprompt">
                     Please input the verification code given to you
                     </div>
-                    <form onSubmit={handleVC}>
+                    <form onSubmit={handleVerificationCheck}>
                     <div className="inputs">
                         <input
                             type="text"
                             className="inVC"
                             placeholder="Verification Code"
-                            value={verificationNumber}
-                            onChange={(e) => setVerificationNumber(e.target.value)}
+                            value={code}
+                            onChange={handleCodeChange}
                         />
                         </div>
-                        <Link to={"/PasswordReset"}>
-                            <button className="continueButton">CONTINUE</button>
-                        </Link>      
+                        <button className = "continueButton" type="submit">CONTINUE</button>
                     </form>
                 </div>
             </div>
