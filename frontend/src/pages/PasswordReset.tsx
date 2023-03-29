@@ -45,11 +45,9 @@ export const PasswordReset = () => {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center" }}>
-                            <Link to={"/"}>
-                                <button className="continueButton">continue</button>
-                            </Link>
-                    </div>
+                    <Link to={"/"}>
+                        <button className="continueButton">CONTINUE</button>
+                    </Link>
                 </form>
             </div>
         </div>

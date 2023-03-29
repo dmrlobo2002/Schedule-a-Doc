@@ -10,12 +10,12 @@ export const ForgotPassword = () => {
     const handleFP = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:6001/login", {
+            const response = await axios.post("http://localhost:6001/ForgotPassword", {
               email,
             });
             if (response.status === 200) {
               localStorage.setItem("token", response.data.token);
-              navigate("/InputVerificationCode");
+              navigate("/VerificationCode");
             }
           } catch (error) {
             console.error(error);
@@ -41,11 +41,9 @@ export const ForgotPassword = () => {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                         </div>
-                        <div style={{ display: "flex", justifyContent: "center" }}>
                             <Link to={"/VerificationCode"}>
-                                <button className="continueButton">continue</button>
+                                <button className="continueButton">CONTINUE</button>
                             </Link>
-                        </div>
                     </form>
                 </div>
             </div>

@@ -22,29 +22,29 @@ export const VerificationCode = () =>{
     };
     return (
         <div className ="VerificationCode">
-            <div className="Area bg-gradient-to-r from-cyan-500 to-blue-500">
-                <div className = "VCmessage">
+            <div className="outerBox bg-gradient-to-r from-cyan-500 to-blue-500">
+                <div className="inner">
+                    <div className = "VCmessage">
                     Verification Code
-                </div>
-                <div className = "vcprompt">
+                    </div>
+                    <div className = "vcprompt">
                     Please input the verification code given to you
-                </div>
-                <form onSubmit={handleVC}>
-                <div className="inputs">
+                    </div>
+                    <form onSubmit={handleVC}>
+                    <div className="inputs">
                         <input
                             type="text"
-                            className="inEmail"
+                            className="inVC"
                             placeholder="Verification Code"
                             value={verificationNumber}
                             onChange={(e) => setVerificationNumber(e.target.value)}
                         />
                         </div>
-                        <div style={{ display: "flex", justifyContent: "center" }}>
-                            <Link to={"/PasswordReset"}>
-                                <button className="continueButton">continue</button>
-                            </Link>
-                        </div>
-                </form>
+                        <Link to={"/PasswordReset"}>
+                            <button className="continueButton">CONTINUE</button>
+                        </Link>      
+                    </form>
+                </div>
             </div>
         </div>
     )
