@@ -39,6 +39,48 @@ This test case verifies that the login page of the web application is functionin
 7. Check if the 'SIGN UP' button exists on the page using `cy.findAllByText('SIGN UP').should('exist')`.
 8. Click on the 'SIGN UP' button using `cy.findAllByText('SIGN UP').click()`.
 
+### Test Case 3 - Patient dashboard Works
+This test case verifies that usee can navigate to the patient dashboard and the web application is functioning correctly. Here are the steps involved:
+1.Visit the dashboard page of the web application using `cy.visit('http://localhost:3000/Dashboard')`.
+2. Check if the 'Patient Dashboard' button exists on the page using`cy.findAllByText('Patient Dashboard').should('exist')`.
+3. Click the 'Patient Dashboard' button `cy.findAllByText('Patient Dashboard').click()`.
+4. Check if the 'Reports' button exists on the page using `cy.findAllByText('Reports').should('exist')`.
+5. Check if the 'Schedule Appointment' button exists on the page using `cy.findAllByText('Schedule Appointment').should('exist')`.
+6. Check if the 'Profile' button exists on the page using `cy.findAllByText('Profile').should('exist')`.
+7. Check if the 'Calendar' button exists on the page using `cy.findAllByText('Calendar').should('exist')`.
+8. Check if the 'Logout' button exists on the page using `cy.findAllByText('Logout').should('exist')`.
+9.Click on the 'Logout' button, should return back to homepage `cy.findAllByText('Logout').click()`.
+
+### Test Case 4 - Doctor dashboard Works
+This test case verifies that usee can navigate to the doctor dashboard and the web application is functioning correctly. Here are the steps involved:
+1.Visit the dashboard page of the web application using `cy.visit('http://localhost:3000/Dashboard')`.
+2. Check if the 'Doctor Dashboard' button exists on the page using `cy.findAllByText('Doctor Dashboard').should('exist')`.
+3. Click the 'Doctort Dashboard' button  `cy.findAllByText('Doctor Dashboard').click()`.
+4. Check if the 'Patients' button exists on the page using `cy.findAllByText('Patients').should('exist')`.
+5. Check if the 'Patient Records' button exists on the page using `cy.findAllByText('Patient Records').should('exist')`.
+6. Check if the 'Appointement Requests' button exists on the page using `cy.findAllByText('Appointment Requests').should('exist')`.
+7. Check if the 'Profile' button exists on the page using `cy.findAllByText('Profile').should('exist')`.
+8. Check if the 'Daily Tasks' button exists on the page using `cy.findAllByText('Daily Tasks').should('exist')`.
+9. Check if the 'Calendar' button exists on the page using `cy.findAllByText('Calendar').should('exist')`.
+10. Check if the 'Logout' button exists on the page using `cy.findAllByText('Logout').should('exist')`.
+11.Click on the 'Logout' button, should return back to homepage `cy.findAllByText('Logout').click()`.
+
+### Test Case 5 - Forgot Password Works
+This test case verifies that the forgot password page of the web application is functioning correctly. Here are the steps involved:
+1. Visit the home page of the web application using `cy.visit('http://localhost:3000')`.
+2. Check if the 'Login' button exists on the page using `cy.findAllByText('Login').should('exist')`.
+3. Click on the 'Login' button using `cy.findAllByText('Login').click()`.
+4. Check if the 'Forgot Password' button exists on the page using  `cy.findAllByText('Forgot Password?').should('exist')`.
+5. Click on the 'Forgot Password' button using  `cy.findAllByText('Forgot Password?').click()`.
+6. Type in a valid email address into the email input field using  `cy.findByPlaceholderText('Email').type('introtosoftware@ufl.edu').should('be.visible')`.
+7. Click on the 'CONTINUE' button using  `cy.findAllByText('CONTINUE').click()`.
+8. Type in a valid verification code into the verfication code input field using  `cy.findByPlaceholderText('Verification Code').type('1234').should('be.visible')`.
+9. Click on the 'CONTINUE' button using  `cy.findAllByText('CONTINUE').click()`.
+10. Type in a new password into the new password input field using  `cy.findByPlaceholderText('New Password').type('hello').should('be.visible')`.
+11. Retype the same password into the confirm password input field using  `cy.findByPlaceholderText('Confirm Password').type('hello').should('be.visible')`.
+12. Click on the 'CONTINUE' button and be redirected to login page using `cy.findAllByText('CONTINUE').click()`.
+
+
 ## Backend Unit Tests
 
 We created a unit test case for the backend of the web application. Here are the details:
@@ -112,7 +154,7 @@ This test case verifies that the Go backend is able to connect to the MongoDB da
 
 ## What Issues Were Successful
 
-Our team was successful in integrating the front end and back end, allowing users to create accounts and log in to the web application. We also successfully implemented Cypress test cases and unit tests for both the frontend and backend. Additionally, we were able to add a feature on the sign-up page that allows users to specify whether they are a doctor or a patient, and we were able to test logins to ensure they were successful.
+Our team was successful in integrating the front end and back end, allowing users to create accounts and log in to the web application. We also successfully implemented Cypress test cases and unit tests for both the frontend and backend. Additionally, we were able to add a feature on the sign-up page that allows users to specify whether they are a doctor or a patient, and we were able to test logins to ensure they were successful. We also implemented a forgot password page, enabling users to retrieve their account. In addition, we successfully created separate dashboards for patients and doctors, catering to their specific needs.
 
 ## What Issues Were not Successful
 
