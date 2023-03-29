@@ -3,6 +3,7 @@ import "./App.css";
 import { render } from "@testing-library/react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import SideBar from "./components/sidebar/SideBar";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
 import Login from "./pages/Login";

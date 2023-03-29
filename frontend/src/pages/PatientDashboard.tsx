@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import SideBar from "../components/sidebar/SideBar";
+import "./PatientDashboard";
 
 export const PatientDashboard = () => {
   const [user, setUser] = useState({
@@ -27,7 +29,15 @@ export const PatientDashboard = () => {
   }, []);
 
   return (
-    <main className="text-center p-5">
+    <div className="pDashboard" >
+      <SideBar />
+      <div className="container">container</div>
+    </div>
+
+
+
+
+    /*<main className="text-center p-5">
         <section>
             <div className="">
                 <h2 className="py-5 text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-400">
@@ -35,7 +45,7 @@ export const PatientDashboard = () => {
                 </h2>
             </div>
         </section>
-    </main>
+    </main>*/
   );
 };
 
