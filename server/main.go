@@ -11,7 +11,7 @@ import (
 
 func main() {
 
-	port := os.Getenv("PORT")
+	port := 6001
 
 	if port == "" {
 		port = "8000"
@@ -40,6 +40,8 @@ func main() {
 	//R
 	router.GET("/user-properties", routes.GetUserProperties)
 	router.GET("/doctors")
+	router.GET("/appointments/:doctorID", routes.GetAppointmentsByDoctor)
+
 	//U
 
 	//D

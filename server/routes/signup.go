@@ -75,6 +75,9 @@ func CreateAppointment(c *gin.Context) {
 		return
 	}
 	appointment.ID = primitive.NewObjectID()
+	//this is default
+	appXYZ := false
+	appointment.Approved = &appXYZ
 
 	result, insertErr := appointmentCollection.InsertOne(ctx, appointment)
 	if insertErr != nil {
@@ -161,9 +164,89 @@ func GetUserProperties(c *gin.Context) {
 		return
 	}
 	// Return the user properties in the response
-	c.JSON(http.StatusOK, gin.H{"email": user.Email, "phoneNumber": user.PhoneNumber, "firstName": user.FirstName, "lastName": user.LastName, "isDoctor": user.IsDoctor})
+	c.JSON(http.StatusOK, gin.H{
+		"email":       user.Email,
+		"phoneNumber": user.PhoneNumber,
+		"firstName":   user.FirstName,
+		"lastName":    user.LastName,
+		"isDoctor":    user.IsDoctor,
+		"_id":         user.ID.Hex(), // Add this line to include the user's _id
+	})
+	
 }
 
 func GetDoctors(c* gin.Context) {
 
 }
+
+func GetAppointmentsByDoctor(c *gin.Context) {
+	// Get the doctorID from the URL parameter
+	doctorID := c.Param("doctorID")
+
+	// Convert the doctorID to a MongoDB ObjectID
+	doctorObjectID, err := primitive.ObjectIDFromHex(doctorID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid doctor ID"})
+		return
+	}
+
+	// Create a new MongoDB context with a timeout of 100 seconds
+	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+	defer cancel()
+
+	// Find the appointments associated with the doctor
+	cursor, err := appointmentCollection.Find(ctx, bson.M{"_doctorID": doctorObjectID})
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to find appointments"})
+		return
+	}
+
+	// Iterate through the cursor to decode the results
+	var appointments []models.Appointment
+	err = cursor.All(ctx, &appointments)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to decode appointments"})
+		return
+	}
+
+	// Return the appointments in the response
+	c.JSON(http.StatusOK, gin.H{"appointments": appointments})
+}
+
+
+// func GetAllDoctors(c *gin.Context) {
+//     // Create a new MongoDB context with a timeout of 10 seconds
+//     ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+//     defer cancel()
+
+//     // Define a filter to find all users with isDoctor set to true
+//     filter := bson.M{"isDoctor": true}
+
+//     // Find all matching users
+//     cur, err := userCollection.Find(ctx, filter)
+//     if err != nil {
+//         c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve doctors"})
+//         return
+//     }
+
+//     // Iterate through the results and append them to a slice
+//     var doctors []models.User
+//     for cur.Next(ctx) {
+//         var doctor models.User
+//         err := cur.Decode(&doctor)
+//         if err != nil {
+//             c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to decode doctor data"})
+//             return
+//         }
+//         doctors = append(doctors, doctor)
+//     }
+
+//     // Check if there were any decoding errors
+//     if err := cur.Err(); err != nil {
+//         c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve doctors"})
+//         return
+//     }
+
+//     // Return the slice of doctors as a JSON response
+//     c.JSON(http.StatusOK, gin.H{"doctors": doctors})
+// }
