@@ -11,7 +11,7 @@ import (
 
 func main() {
 
-	port := os.Getenv("PORT")
+	port := 6001
 
 	if port == "" {
 		port = "8000"
