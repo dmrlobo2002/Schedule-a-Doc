@@ -40,6 +40,8 @@ func main() {
 	//R
 	router.GET("/user-properties", routes.GetUserProperties)
 	router.GET("/doctors")
+	router.GET("/appointments/:doctorID", routes.GetAppointmentsByDoctor)
+
 	//U
 
 	//D

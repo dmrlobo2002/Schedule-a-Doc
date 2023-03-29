@@ -75,6 +75,9 @@ func CreateAppointment(c *gin.Context) {
 		return
 	}
 	appointment.ID = primitive.NewObjectID()
+	//this is default
+	appXYZ := false
+	appointment.Approved = &appXYZ
 
 	result, insertErr := appointmentCollection.InsertOne(ctx, appointment)
 	if insertErr != nil {
@@ -161,9 +164,51 @@ func GetUserProperties(c *gin.Context) {
 		return
 	}
 	// Return the user properties in the response
-	c.JSON(http.StatusOK, gin.H{"email": user.Email, "phoneNumber": user.PhoneNumber, "firstName": user.FirstName, "lastName": user.LastName, "isDoctor": user.IsDoctor})
+	c.JSON(http.StatusOK, gin.H{
+		"email":       user.Email,
+		"phoneNumber": user.PhoneNumber,
+		"firstName":   user.FirstName,
+		"lastName":    user.LastName,
+		"isDoctor":    user.IsDoctor,
+		"_id":         user.ID.Hex(), // Add this line to include the user's _id
+	})
+	
 }
 
 func GetDoctors(c* gin.Context) {
 
+}
+
+func GetAppointmentsByDoctor(c *gin.Context) {
+	// Get the doctorID from the URL parameter
+	doctorID := c.Param("doctorID")
+
+	// Convert the doctorID to a MongoDB ObjectID
+	doctorObjectID, err := primitive.ObjectIDFromHex(doctorID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid doctor ID"})
+		return
+	}
+
+	// Create a new MongoDB context with a timeout of 100 seconds
+	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+	defer cancel()
+
+	// Find the appointments associated with the doctor
+	cursor, err := appointmentCollection.Find(ctx, bson.M{"_doctorID": doctorObjectID})
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to find appointments"})
+		return
+	}
+
+	// Iterate through the cursor to decode the results
+	var appointments []models.Appointment
+	err = cursor.All(ctx, &appointments)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to decode appointments"})
+		return
+	}
+
+	// Return the appointments in the response
+	c.JSON(http.StatusOK, gin.H{"appointments": appointments})
 }

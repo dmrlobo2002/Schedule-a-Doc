@@ -25,3 +25,13 @@
     /* text-decoration: underline; */
     font-weight: bold;
 }
+
+.nav-bar-element:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  
+  .nav-bar-element:focus {
+    outline: none;
+  }
