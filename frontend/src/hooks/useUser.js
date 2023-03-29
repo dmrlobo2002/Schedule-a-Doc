@@ -8,7 +8,7 @@ const useUser = () => {
     firstName: "",
     lastName: "",
     isDoctor: false,
-    id: null,
+    _id: null,
   });
 
   useEffect(() => {

@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AboutUs from "./pages/AboutUs";
 import Dashboard from "./pages/Dashboard";
+import Scheduling from "./pages/Scheduling";
 import PatientDashboard from "./pages/PatientDashboard";
 import DoctorDashboard from "./pages/DoctorDashboard";
 // import DoctorScheduling from "./pages/DoctorScheduling";
@@ -17,6 +18,8 @@ import PatientScheduling from "./pages/PatientScheduling";
 import ForgotPassword from "./pages/ForgotPassword";
 import VerificationCode from "./pages/VerificationCode";
 import { PasswordReset } from "./pages/PasswordReset";
+import DoctorScheduling from "./pages/DoctorScheduling";
+
 
 
 
@@ -30,8 +33,10 @@ function App() {
           <Route path="/error" element={<Error />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
+          <Route path="/Scheduling" element={<Scheduling />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/DoctorScheduling" element={<DoctorScheduling />} />
           <Route path="/VerificationCode" element={<VerificationCode />} />
           <Route path="/ForgotPassword" element={<ForgotPassword />} />
           <Route path="/PasswordReset" element={<PasswordReset />} />
