@@ -18,16 +18,8 @@ export const Login = () => {
         password,
       });
       if (response.status === 200) {
-        // destructure the token and isDoctor properties from the response.data object
-        //remember that login returns the object?
         localStorage.setItem("token", response.data.token);
         navigate("/Dashboard");
-        //commented out as now all the rerouting to doctor dashboard or patient dashboard will be held by Dashboard
-        // if (isDoctor) {
-        //   navigate("/Home");
-        // } else {
-        //   navigate("/patient-dashboard")
-        // }
       }
     } catch (error) {
       console.error(error);
@@ -82,5 +74,5 @@ export const Login = () => {
     </div>
   );
 };
-
 export default Login;
+

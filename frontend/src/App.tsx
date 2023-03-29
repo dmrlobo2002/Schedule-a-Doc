@@ -11,8 +11,8 @@ import Signup from "./pages/Signup";
 import AboutUs from "./pages/AboutUs";
 import Dashboard from "./pages/Dashboard";
 import PatientDashboard from "./pages/PatientDashboard";
-import DoctorScheduling from "./pages/DoctorDashboard";
-import PatientScheduling from "./pages/PatientDashboard";
+// import DoctorScheduling from "./pages/DoctorScheduling";
+import PatientScheduling from "./pages/PatientScheduling";
 import ForgotPassword from "./pages/ForgotPassword";
 import VerificationCode from "./pages/VerificationCode";
 import { PasswordReset } from "./pages/PasswordReset";
@@ -33,8 +33,8 @@ function App() {
           <Route path="/ForgotPassword" element={<ForgotPassword />} />
           <Route path="/PasswordReset" element={<PasswordReset />} />
           <Route path="/patient-dashboard" element={<PatientDashboard />} />
-          <Route path="/PatientScheduling" element={<DoctorScheduling />} />
-          <Route path="/DoctorScheduling" element={<PatientScheduling />} />
+          {/* <Route path="/DoctorScheduling" element={<DoctorScheduling />} /> */}
+          <Route path="/PatientScheduling" element={<PatientScheduling />} />
         </Routes>
       </div>
     </>
