@@ -15,12 +15,19 @@
     border-radius: 20px;
 }
 .AUMessage{
+    text-align: center;
     font-size: xx-large;
     font-style: italic;
+    align-items: center;
 }
 .Message{
     font-size: x-large;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
 }
 .Names{
     font-size: large;
+    align-items: center;
+    text-align: center;
 }

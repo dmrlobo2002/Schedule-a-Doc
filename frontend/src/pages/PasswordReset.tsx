@@ -8,16 +8,20 @@ export const PasswordReset = () => {
     const navigate = useNavigate();
     const [newPassword, setNewPassword] = useState("");
     const [ConfirmPassword, setConfirmPassword] = useState("");
-    const handleNewPassword = async (e: React.FormEvent<HTMLFormElement>) =>{
-        e.preventDefault();
-        try{
-            const response = await axios.post("http://localhost:6001/PasswordReset", {
-                newPassword,ConfirmPassword
-              });
-        }
-        catch (error) {
-            console.error(error);
-        }
+    const handleNewPassword =  (event: React.ChangeEvent<HTMLInputElement>) => {
+        setNewPassword(event.target.value);
+    };
+    const handleConfirmPassword =  (event: React.ChangeEvent<HTMLInputElement>) => {
+        setConfirmPassword(event.target.value);
+    };
+    const handlePasswordConfirmation = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (newPassword === ConfirmPassword) {
+            alert("Passwords match! Passwrord reset successful.");
+            navigate("/");    
+          } else {
+            alert("Password do not match. Password reset unsuccessful.");
+          }
     };
     return(
         <div className="PasswordReset">
@@ -28,28 +32,24 @@ export const PasswordReset = () => {
                 <div className = "NPprompt">
                         Please input your new password
                 </div>
-                <form onSubmit={handleNewPassword}>
+                <form onSubmit={handlePasswordConfirmation}>
                     <div className="inputs">
                         <input
                             type="text"
                             className="inEmail"
                             placeholder="New Password"
                             value={newPassword}
-                            onChange={(e) => setNewPassword(e.target.value)}
+                            onChange={handleNewPassword}
                         />
                         <input
                             type="text"
                             className="inEmail"
                             placeholder="Confirm Password"
                             value={ConfirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            onChange={handleConfirmPassword}
                         />
                     </div>
-                    <div style={{ display: "flex", justifyContent: "center" }}>
-                            <Link to={"/"}>
-                                <button className="continueButton">continue</button>
-                            </Link>
-                    </div>
+                    <button className="continueButton">CONTINUE</button>
                 </form>
             </div>
         </div>

@@ -6,19 +6,17 @@ import { Link } from "react-router-dom";
 
 export const ForgotPassword = () => {
     const navigate =  useNavigate();
-    const [email, setEmail] = useState("");
-    const handleFP = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post("http://localhost:6001/login", {
-              email,
-            });
-            if (response.status === 200) {
-              localStorage.setItem("token", response.data.token);
-              navigate("/InputVerificationCode");
-            }
-          } catch (error) {
-            console.error(error);
+    const expectedCode = "introtosoftware@ufl.edu";
+    const [email, setCode] = useState("");
+    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCode(event.target.value);
+      };
+      const handleEmailCheck = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (email === expectedCode) {
+            navigate("/VerificationCode");    
+          } else {
+            alert("Invalid Email. Please try again.");
           }
     };
     return (
@@ -31,21 +29,17 @@ export const ForgotPassword = () => {
                     <div className = "Emailprompt">
                         Please input the email associated with your account
                     </div>
-                    <form onSubmit={handleFP}>
+                    <form onSubmit={handleEmailCheck}>
                         <div className="inputs">
                         <input
                             type="text"
                             className="inEmail"
                             placeholder="Email"
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={handleEmailChange}
                         />
                         </div>
-                        <div style={{ display: "flex", justifyContent: "center" }}>
-                            <Link to={"/VerificationCode"}>
-                                <button className="continueButton">continue</button>
-                            </Link>
-                        </div>
+                            <button className="continueButton">CONTINUE</button>
                     </form>
                 </div>
             </div>
