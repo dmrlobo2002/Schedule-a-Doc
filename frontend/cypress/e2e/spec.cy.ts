@@ -23,4 +23,15 @@ describe('empty spec', () => {
     
   })
 
+  it('Patient dashboard Works', () =>{
+    cy.visit('http://localhost:3000/patient-dashboard')
+    cy.findAllByText('Dashboard').should('exist');
+    cy.findAllByText('Dashboard').click();
+    cy.findAllByText('Calendar').should('exist');
+    cy.findAllByText('Calendar').click();
+    cy.findAllByText('About Us').should('exist');
+    cy.findAllByText('About Us').click();
+    cy.findAllByText('User Info').should('not.exist');
+  })
+  
 })

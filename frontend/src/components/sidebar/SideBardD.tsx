@@ -4,11 +4,12 @@ import "./SideBar.css";
 import { Link } from "react-router-dom";
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined';
-import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import InventoryRoundedIcon from '@mui/icons-material/InventoryRounded';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-
+import RuleRoundedIcon from '@mui/icons-material/RuleRounded';
+import Diversity1RoundedIcon from '@mui/icons-material/Diversity1Rounded';
 
 export const SideBar = () => {
     
@@ -39,32 +40,40 @@ export const SideBar = () => {
     return(
         <div className="sidebar" >
             <div className="top">
-            <span className="user"> UserName {user.firstName} {user.lastName} </span>                  
+            <span className="user"> Doctor Name {user.firstName} {user.lastName} </span>                  
             </div>
-            <p className="title"> PATIENT </p>
+            <p className="title"> DOCTOR </p>
             <hr/>
             <div className="center">
                <ul>
                <p className="titleUser"> MAIN </p>
                     <li className="list">
-                    <Link to="/patient-dashboard">
+                    <Link to="/doctor-dashboard">
                     <DashboardRoundedIcon className="icon"/>
                         <span> Dashboard</span>
                     </Link>
                     </li >
-                    <p className="titleUser"> SERVICE </p>
                     <li className="list">
-                        <SummarizeOutlinedIcon className="icon"/>
-                        <span> Reports</span>
+                        <Diversity1RoundedIcon className="icon"/>
+                        <span> Patients </span>
+
                     </li>
                     <li className="list">
-                        <EventAvailableIcon className="icon"/>
-                        <span> Schedule Appointment</span>
+                        <SummarizeOutlinedIcon className="icon"/>
+                        <span> Patient Records</span>
+                    </li>
+                    <li className="list">
+                        <RuleRoundedIcon className="icon"/>
+                        <span> Appointement Requests</span>
                     </li>
                     <p className="titleUser"> USER </p>
                     <li className="list">
                     <AccountCircleRoundedIcon className="icon"/>
                         <span>Profile</span>
+                    </li>
+                    <li className="list">
+                        <InventoryRoundedIcon className="icon"/>
+                        <span> Daily Tasks</span>
                     </li>
                     <li className="list">
                         <CalendarMonthIcon className="icon"/>

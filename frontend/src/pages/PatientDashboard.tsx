@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SideBar from "../components/sidebar/SideBar";
+import PatientWidgets from "../components/widgets/PatientWidgets";
 import "./PatientDashboard";
 
 export const PatientDashboard = () => {
@@ -29,10 +30,15 @@ export const PatientDashboard = () => {
   }, []);
 
   return (
-    <div className="pDashboard" >
+    <div className = "patient">
       <SideBar />
-      <div className="container">container</div>
+      <div className= "pside">
+        <div className="pwidget">
+         
+      </div>
+      </div> 
     </div>
+    
     
   );
 };

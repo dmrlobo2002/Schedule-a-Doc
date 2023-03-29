@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import useUser from "../hooks/useUser";
+import { Link } from "react-router-dom";
 
 export const Dashboard = () => {
   const navigate = useNavigate();
@@ -18,8 +19,14 @@ export const Dashboard = () => {
   }, [user, navigate]);
 
   return (
-    <div>
-      <p></p>
+    <div className="patientbox">
+      <Link to="/patient-dashboard">
+         <div className="pat" style={{ display: "flex", justifyContent: "center" }}> Patient Dashboard</div>
+      </Link>
+      <Link to="/doctor-dashboard">
+      <div className="doc"style={{ display: "flex", justifyContent: "center" }}> Doctor Dashboard</div>
+      </Link>
+      
     </div>
   );
 };

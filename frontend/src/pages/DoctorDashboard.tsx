@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import SideBarD from "../components/sidebar/SideBardD";
 
 export const DoctorDashboard = () => {
   const [user, setUser] = useState({
@@ -27,15 +28,16 @@ export const DoctorDashboard = () => {
   }, []);
 
   return (
-    <main className="text-center p-5">
-        <section>
-            <div className="">
-                <h2 className="py-5 text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-400">
-                    Welcome, <span className="bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">{user.firstName}</span>, to your {user.isDoctor ? "Doctor" : "Patient"} Dashboard
-                </h2>
-            </div>
-        </section>
-    </main>
+    <div className = "patient">
+      <SideBarD />
+      <div className= "pside">
+        <div className="pwidget">
+         
+      </div>
+      </div> 
+    </div>
+    
+    
   );
 };
 

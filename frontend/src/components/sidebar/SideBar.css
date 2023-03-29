@@ -39,7 +39,7 @@ hr{
 
 .center{
    padding-left: 10px;
-   margin-top: 30px;
+   margin-top: 15px;
 }
 
 ul{
@@ -53,8 +53,8 @@ ul{
     font-size: 12px;
     font-weight: bold;
     color : gray;
-    margin-top: 10px;
-    margin-bottom: 0%;
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 li{
     display: flex;
@@ -67,7 +67,7 @@ li{
     color:  rgb(68, 143, 180) ;
 }
 
-li:hover{
+.list:hover{
     background-color: rgb(229, 241, 244);
     color:  rgb(93, 178, 220);
 }
@@ -80,6 +80,7 @@ span{
 }
 
 .bottom{
-    margin-top: 250px;
+    margin-top: 230px;
     padding-left: 10px;
 }
+
