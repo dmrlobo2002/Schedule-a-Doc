@@ -33,11 +33,12 @@ export const PatientDashboard = () => {
       <SideBar />
       <div className="container">container</div>
     </div>
+    
+  );
+};
 
-
-
-
-    /*<main className="text-center p-5">
+export default PatientDashboard
+/*<main className="text-center p-5">
         <section>
             <div className="">
                 <h2 className="py-5 text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-400">
@@ -46,7 +47,3 @@ export const PatientDashboard = () => {
             </div>
         </section>
     </main>*/
-  );
-};
-
-export default PatientDashboard

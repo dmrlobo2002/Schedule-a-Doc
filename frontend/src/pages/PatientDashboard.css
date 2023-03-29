@@ -1,8 +1,11 @@
 .pDashboard{
+    width: 100vw;
+    height: 100vh;
     display: flex;
 
     
 }
 .container{
     background-color: lightblue;
+    flex: 1;
  }
