@@ -78,7 +78,7 @@ This test case verifies that the forgot password page of the web application is 
 9. Click on the 'CONTINUE' button using  `cy.findAllByText('CONTINUE').click()`.
 10. Type in a new password into the new password input field using  `cy.findByPlaceholderText('New Password').type('hello').should('be.visible')`.
 11. Retype the same password into the confirm password input field using  `cy.findByPlaceholderText('Confirm Password').type('hello').should('be.visible')`.
-12. Click on the 'CONTINUE' button and be redirected to login page using `cy.findAllByText('CONTINUE').click()`.
+12. Click on the 'CONTINUE' button and be redirected to homepage using `cy.findAllByText('CONTINUE').click()`.
 
 
 ## Backend Unit Tests
