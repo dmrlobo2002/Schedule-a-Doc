@@ -40,7 +40,7 @@ export const SideBar = () => {
     return(
         <div className="sidebar" >
             <div className="top">
-            <span className="user"> Doctor Name {user.firstName} {user.lastName} </span>                  
+            <span className="user"> {user.firstName} {user.lastName} </span>                  
             </div>
             <p className="title"> DOCTOR </p>
             <hr/>
