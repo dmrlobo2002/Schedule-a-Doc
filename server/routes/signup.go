@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strings"
 	"time"
+	"strconv"
 
 	"server/models"
 
@@ -211,6 +212,59 @@ func GetAppointmentsByDoctor(c *gin.Context) {
 
 	// Return the appointments in the response
 	c.JSON(http.StatusOK, gin.H{"appointments": appointments})
+}
+
+
+func GetUsersByID(c* gin.Context){
+	userID := c.Param("userID")
+	// Convert the userID to a MongoDB ObjectID
+	userObjectID, err := primitive.ObjectIDFromHex(userID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid user ID"})
+		return
+	}
+
+	// Create a new MongoDB context with a timeout of 100 seconds
+	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+	defer cancel()
+
+	// Find the user associated with the user ID
+	var user models.User
+	err = userCollection.FindOne(ctx, bson.M{"_id": userObjectID}).Decode(&user)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to find user"})
+		return
+	}
+
+	fmt.Println("User fetched: ", user)
+
+	// Return the user in the response
+	c.JSON(http.StatusOK, gin.H{"user": user})
+}
+
+func ApproveDenyAppointment(c *gin.Context) {
+	appointmentID := c.Param("id")
+	isApproved, err := strconv.ParseBool(c.PostForm("isApproved"))
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid isApproved value"})
+		return
+	}
+
+	filter := bson.M{"_id": appointmentID}
+	update := bson.M{"$set": bson.M{"isApproved": isApproved}}
+
+	result, err := appointmentCollection.UpdateOne(context.TODO(), filter, update)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error updating appointment"})
+		return
+	}
+
+	if result.ModifiedCount > 0 {
+		c.JSON(http.StatusOK, gin.H{"message": "Appointment updated successfully"})
+	} else {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Appointment not found"})
+	}
 }
 
 

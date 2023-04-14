@@ -41,8 +41,10 @@ func main() {
 	router.GET("/user-properties", routes.GetUserProperties)
 	router.GET("/doctors")
 	router.GET("/appointments/:doctorID", routes.GetAppointmentsByDoctor)
+	router.GET("/users/:userID", routes.GetUsersByID)
 
 	//U
+	router.PATCH("/appointments/:id/status", routes.ApproveDenyAppointment)
 
 	//D
 
