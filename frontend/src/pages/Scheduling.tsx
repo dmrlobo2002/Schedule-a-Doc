@@ -8,6 +8,7 @@ const Scheduling = () => {
 
   useEffect(() => {
     // Check if the user data has been fetched
+    console.log(user);
     if (user && user.email) {
       if (user.isDoctor) {
         navigate("/DoctorScheduling");

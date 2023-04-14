@@ -20,14 +20,11 @@ import VerificationCode from "./pages/VerificationCode";
 import { PasswordReset } from "./pages/PasswordReset";
 import DoctorScheduling from "./pages/DoctorScheduling";
 
-
-
-
 function App() {
   return (
     <>
       <div className="container">
-      <Navbar />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/error" element={<Error />} />
@@ -42,11 +39,10 @@ function App() {
           <Route path="/PasswordReset" element={<PasswordReset />} />
           <Route path="/patient-dashboard" element={<PatientDashboard />} />
           <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
-          {/* <Route path="/DoctorScheduling" element={<DoctorScheduling />} />*/ }
+          {/* <Route path="/DoctorScheduling" element={<DoctorScheduling />} />*/}
           <Route path="/PatientScheduling" element={<PatientScheduling />} />
         </Routes>
-      </div>     
-     
+      </div>
     </>
   );
 }

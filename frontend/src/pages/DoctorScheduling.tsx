@@ -54,6 +54,12 @@ const DoctorScheduling = () => {
       // Access the "appointments" property of response.data
       const appointmentsData = response.data.appointments;
 
+      if (appointmentsData === null) {
+        console.log("No appointments found");
+        setAppointments([]);
+        return;
+      }
+
       if (Array.isArray(appointmentsData)) {
         console.log(appointmentsData as Appointment[]);
 
@@ -146,12 +152,27 @@ const DoctorScheduling = () => {
       <h1>Doctor Scheduling</h1>
       <table>
         <thead>
-          <tr>
-            <th>Date</th>
-            <th>Patient</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
+          {Array.isArray(appointments) &&
+            appointments !== null &&
+            appointments.length > 0 &&
+            appointments.map((appointment: any) => (
+              <tr key={appointment.id}>
+                <td>{formatDate(appointment.date)}</td>
+                <td>{appointment.patientName}</td>
+                <td>{appointment.isApproved ? "Approved" : "Pending"}</td>
+                <td>
+                  {appointment.isApproved ? (
+                    <button onClick={() => handleDeny(appointment.ID)}>
+                      Deny
+                    </button>
+                  ) : (
+                    <button onClick={() => handleApprove(appointment.ID)}>
+                      Approve
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
         </thead>
         <tbody>
           {Array.isArray(appointments) &&
