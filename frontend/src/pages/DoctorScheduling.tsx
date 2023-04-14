@@ -87,6 +87,11 @@ const DoctorScheduling = () => {
         `http://localhost:6001/appointments/${appointmentId}/status`,
         {
           isApproved: true,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
 
@@ -107,6 +112,11 @@ const DoctorScheduling = () => {
         `http://localhost:6001/appointments/${appointmentId}/status`,
         {
           isApproved: false,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
 

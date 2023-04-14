@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strings"
 	"time"
-	"strconv"
+	//"strconv"
 
 	"server/models"
 
@@ -242,30 +242,50 @@ func GetUsersByID(c* gin.Context){
 	c.JSON(http.StatusOK, gin.H{"user": user})
 }
 
+type ApprovalRequest struct {
+	IsApproved bool `json:"isApproved"`
+}
+
 func ApproveDenyAppointment(c *gin.Context) {
 	appointmentID := c.Param("id")
-	isApproved, err := strconv.ParseBool(c.PostForm("isApproved"))
 
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid isApproved value"})
+	var requestData struct {
+		IsApproved bool `json:"isApproved"`
+	}
+
+	if err := c.BindJSON(&requestData); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request data"})
 		return
 	}
 
-	filter := bson.M{"_id": appointmentID}
-	update := bson.M{"$set": bson.M{"isApproved": isApproved}}
+	appointmentObjectID, err := primitive.ObjectIDFromHex(appointmentID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid appointment ID"})
+		return
+	}
 
-	result, err := appointmentCollection.UpdateOne(context.TODO(), filter, update)
+	filter := bson.M{"_id": appointmentObjectID}
+	update := bson.M{"$set": bson.M{"isApproved": requestData.IsApproved}}
+
+	var appointment models.Appointment
+	err = appointmentCollection.FindOneAndUpdate(context.Background(), filter, update).Decode(&appointment)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error updating appointment"})
 		return
 	}
 
-	if result.ModifiedCount > 0 {
-		c.JSON(http.StatusOK, gin.H{"message": "Appointment updated successfully"})
-	} else {
+	if appointment.ID == primitive.NilObjectID {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Appointment not found"})
+		return
 	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Appointment updated successfully"})
 }
+
+
+
+
+
 
 
 // func GetAllDoctors(c *gin.Context) {
