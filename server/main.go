@@ -35,11 +35,11 @@ func main() {
 	// these are the endpoints
 	//C
 	router.POST("/signup", routes.CreateUser)
-	router.POST("/appointment", routes.CreateAppointment)
 	router.POST("/login", routes.Login)
+	router.POST("/createAppointmnet", routes.CreateAppointment)
 	//R
 	router.GET("/user-properties", routes.GetUserProperties)
-	router.GET("/doctors")
+	router.GET("/doctors", routes.GetAllDoctors)
 	router.GET("/appointments/:doctorID", routes.GetAppointmentsByDoctor)
 	router.GET("/users/:userID", routes.GetUsersByID)
 

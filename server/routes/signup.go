@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strings"
 	"time"
+	"log"
 	//"strconv"
 
 	"server/models"
@@ -176,9 +177,41 @@ func GetUserProperties(c *gin.Context) {
 	
 }
 
-func GetDoctors(c* gin.Context) {
+func GetAllDoctors(c *gin.Context) {
+	// Create a new MongoDB context with a timeout of 100 seconds
+	ctx, cancel := context.WithTimeout(context.Background(), 100*time.Second)
+	defer cancel()
 
+	// Find all users where isDoctor is true
+	cursor, err := userCollection.Find(ctx, bson.M{"isdoctor": true})
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to find doctors"})
+		return
+	}
+	defer cursor.Close(ctx)
+
+	// Iterate through the cursor to decode the results
+	var doctors []models.User
+	for cursor.Next(ctx) {
+		var doctor models.User
+		err := cursor.Decode(&doctor)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to decode doctor"})
+			return
+		}
+		doctors = append(doctors, doctor)
+	}
+
+	// Log the number of doctors found
+	log.Printf("Found %d doctors", len(doctors))
+
+	// Return the doctors in the response
+	c.JSON(http.StatusOK, gin.H{"doctors": doctors})
 }
+
+
+
+  
 
 func GetAppointmentsByDoctor(c *gin.Context) {
 	// Get the doctorID from the URL parameter
