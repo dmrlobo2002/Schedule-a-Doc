@@ -24,8 +24,10 @@ import LabResults from "./pages/LabResults";
 import VerificationCode from "./pages/VerificationCode";
 import { PasswordReset } from "./pages/PasswordReset";
 import DoctorScheduling from "./pages/DoctorScheduling";
-
+import DaCalendar from "./pages/DaCalendar";
 import PaCalendar from "./pages/PaCalendar";
+import DailyTasks from "./pages/DailyTask";
+import DocCalConnect from "./pages/DocCalConnect";
 
 function App() {
   return (
@@ -54,6 +56,9 @@ function App() {
           {/* <Route path="/DoctorScheduling" element={<DoctorScheduling />} />*/}
           <Route path="/PatientScheduling" element={<PatientScheduling />} />
           <Route path="/PaCalendar" element={<PaCalendar />} />
+          <Route path="/DaCalendar" element={<DaCalendar />} />
+          <Route path="/DailyTasks" element={<DailyTasks />} />
+          
         </Routes>
       </div>
     </>

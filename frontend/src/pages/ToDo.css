@@ -1,0 +1,46 @@
+.daily-schedule {
+    background-color: #99cdef;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+  }
+  
+  .daily-schedule-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .daily-schedule-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 0;
+  }
+  
+  .daily-schedule-date {
+    font-size: 16px;
+  }
+  
+  .daily-schedule-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .daily-schedule-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .daily-schedule-time {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  .daily-schedule-event {
+    font-size: 18px;
+  }

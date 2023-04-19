@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import SideBarD from "../components/sidebar/SideBardD";
 import { Link } from "react-router-dom";
-import './PaCalendar.css'
+import SideBarD from "../components/sidebar/SideBardD";
+
+import './DaCalendar.css'
 
 interface IAppState {
     events: {
@@ -49,26 +50,26 @@ interface IAppState {
     };
   
     return (
-        <div className="Cal">
-        <div className="PaCalendar" >
-        <Calendar
-          onClickDay={handleDateClick}
-          tileContent={tileContent}
-          className="calendar"
-        />
-        
-         <div className="back">
-                 <ul>
-                 <li className="list2">
-                    <Link to="/patient-dashboard">
-                            <span>BACK</span>
-                    </Link>
-                    </li>
-                 </ul>
-            </div> 
-      </div>
-        
-        </div>
+     
+      <div className="DaCalendar" >
+      <Calendar
+        onClickDay={handleDateClick}
+        tileContent={tileContent}
+        className="calendar"
+      />
+      
+       <div className="back">
+               <ul>
+               <li className="list2">
+                  <Link to="/doctor-dashboard">
+                          <span>BACK</span>
+                  </Link>
+                  </li>
+               </ul>
+          </div> 
+    </div>
+      
+     
       
     );
   };
