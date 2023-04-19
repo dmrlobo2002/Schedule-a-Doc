@@ -7,7 +7,6 @@ export const VerificationCode = () =>{
     const navigate =  useNavigate();
     const expectedCode = 1234;
     const [code, setCode] = useState("");
-    const [verificationResult, setVerificationResult] = useState("");
     const handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCode(event.target.value);
       };

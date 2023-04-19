@@ -16,6 +16,11 @@ import DoctorDashboard from "./pages/DoctorDashboard";
 // import DoctorScheduling from "./pages/DoctorScheduling";
 import PatientScheduling from "./pages/PatientScheduling";
 import ForgotPassword from "./pages/ForgotPassword";
+import PatientInfo from "./pages/PatientInfo";
+import DoctorInfo from "./pages/DoctorInfo";
+import PatientRecords from "./pages/PatientRecords";
+import PendingRequests from "./pages/PendingRequests";
+import LabResults from "./pages/LabResults";
 import VerificationCode from "./pages/VerificationCode";
 import { PasswordReset } from "./pages/PasswordReset";
 import DoctorScheduling from "./pages/DoctorScheduling";
@@ -41,6 +46,11 @@ function App() {
           <Route path="/PasswordReset" element={<PasswordReset />} />
           <Route path="/patient-dashboard" element={<PatientDashboard />} />
           <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
+          <Route path="/PatientInfo" element={<PatientInfo />} />
+          <Route path="/LabResults" element={<LabResults />} />
+          <Route path="/DoctorInfo" element={<DoctorInfo />} />
+          <Route path="/PatientRecords" element={<PatientRecords />} />
+          <Route path="/PendingRequests" element={<PendingRequests />} />
           {/* <Route path="/DoctorScheduling" element={<DoctorScheduling />} />*/}
           <Route path="/PatientScheduling" element={<PatientScheduling />} />
           <Route path="/PaCalendar" element={<PaCalendar />} />
