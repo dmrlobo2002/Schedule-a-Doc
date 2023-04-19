@@ -2,12 +2,11 @@
 
 ## Work Completed
 
-We were able to integrate the front end with the back end and create a User inside of the mongo DB database and then have the User input their
-information in the sign up and login page. We also implemented test cases using cypress for all of the buttons on the home page and for the login
-page which ensures the UI will perform as expected when a User uses it. We also added unit tests for the backend which ensured that the backend would
-recieve the information from the frontend. We also, added a test to ensure the login is working properly and ensure we could find a created user
-within the database which we have created. We also added an option on the front page which would ask the user signing up whether they were a doctor.
-If, no is selected we assume the patient is a patient.
+In this sprint, we focused on frurther implementing backend functionality with four key functions: GetAllDoctors, GetUserIDByEmail, ApproveDenyAppointment, and DeleteAppointment. GetAllDoctors retrieves all doctor records from the database. GetUserIDByEmail finds a user by their email and returns their ID. ApproveDenyAppointment updates the approval status of a specific appointment. Finally, DeleteAppointment removes an appointment from the database based on its ID. These functions help facilitate the management of doctors, users, and appointments within the web application. The task, however, that was most time consuming for this Sprint was actually being able to connect the frontend and backend when creating an appointment, this required the backend to dive deep into the frontend components with Axios. The way it was finally resolved was by returning a user's objectID (they are identified uniquely in the backend with a `primitive.ObjectID'), fromi their email, this is because since an email was a string, it could travel between frontend and backend, however the `objectID' could not: since emails are technically also unique to each user, we were able to use this instead. We also were able to add new test cases to test trying to insert a user with invalid fields to test for error handling, data quality assurance and also testing finding all of the doctors, both of these Go Tests had numerous cases.
+
+Frontend:
+
+
 
 ## Frontend Cypress Tests
 
@@ -167,18 +166,31 @@ This test case verifies that the GetAllDoctors endpoint retrieves all doctors fr
 7. Record the response from the request
 8. Assert that the response status code is HTTP 200 (OK)
 9. Unmarshal the response body into a GetAllDoctorsResponse struct
-10. Check if the test doctors are present in the response
+10. Check i`f the test doctors are present in the response
 11. Delete the test doctors from the user collection
 12. The createTestDoctor function is a helper function that creates a test doctor in the user collection for use in the TestGetAllDoctors test case.
 
 
 ## What Issues Were Successful
 
-Our team was successful in integrating the front end and back end, allowing users to create accounts and log in to the web application. We also successfully implemented Cypress test cases and unit tests for both the frontend and backend. Additionally, we were able to add a feature on the sign-up page that allows users to specify whether they are a doctor or a patient, and we were able to test logins to ensure they were successful. We also implemented a forgot password page, enabling users to retrieve their account. In addition, we successfully created separate dashboards for patients and doctors, catering to their specific needs.
+
+Backend:
+
+In this sprint, several issues were successfully addressed, which contributed to the development and functionality of the doctor scheduling web app: Doctor retrieval: The GetAllDoctors function was implemented successfully, allowing the app to fetch all doctors from the database by filtering users with the "isdoctor" field set to true. This is crucial for displaying a list of available doctors to the users. User identification: The GetUserIDByEmail function was developed to find a user by their email address and return their ID. This functionality is essential for associating appointments and other user-specific data with the correct user. Appointment management: Two functions were implemented to handle appointment management: ApproveDenyAppointment and DeleteAppointment. ApproveDenyAppointment allows for the approval or denial of an appointment, providing a streamlined way to manage appointment requests. DeleteAppointment enables the deletion of appointments from the database, offering a means to remove unwanted or outdated appointments.
+
+By addressing these issues, the sprint was successful in improving the doctor scheduling web app's user experience and functionality, allowing for more efficient appointment management and user-doctor interactions.
+
+Frontend:
+
 
 ## What Issues Were not Successful
 
-We were not able to create pages that were only accessible to logged-in users or a taskbar that was only accessible to logged-in users. These issues will be addressed in future sprints.
+Backend:
+
+We were not succesful yet in being able to connnect the backend to the frontend for the doctor scheduling process, however we were able to make it work with Postman. N issue that was in some ways succesful, but need work on is user authentication or authorization mechanisms. This is because in a real-world application, its crucial to ensure that only authenticated and authorized users can perform actions such as approving, denying, or deleting appointments.
+
+Frontend:
+
 
 ## Backend Documentation
 
@@ -312,20 +324,16 @@ The `signup.go` file includes code that defines three routes for a server: one f
 3. The `Login()` function handles user authentication. It binds the incoming JSON request body to a `models.User` struct and checks if a user with the provided email exists in the users collection of the MongoDB database. If it does not exist, it returns a response with a `BadRequest` HTTP status code and an error message. If the user exists, it checks if the provided password matches the password of the existing user. If it does not match, it returns a response with a `BadRequest` HTTP status code and an error message. Otherwise, it generates a JSON Web Token (JWT) using the `jwt-go` package, signs and encodes the token with a secret key, and returns the token in a response with an `OK` HTTP status code.
    Note that this code uses the gin package to handle HTTP requests and responses, the `go.mongodb.org/mongo-driver` package to interact with a MongoDB database, and the `github.com/go-playground/validator/v10` package to validate input data.
 
-4. The `GetUserProperties` function retrieves the user's properties based on the JWT token present in the `Authorization` header of the incoming request. It first extracts the JWT token from the header and parses it to obtain the user's email. It then creates a new MongoDB context with a timeout of 100 seconds, finds the user based on their email, and decodes the result into a `models.User` struct. Finally, it returns the user's properties in the response, including their email, phone number, first and last names, and whether they are a doctor or not.
-
-5. The `GetAppointmentsByDoctor` function retrieves all appointments associated with a specific doctor. It first extracts the doctorID from the URL parameter of the incoming request and converts it to a MongoDB ObjectID. It then creates a new MongoDB context with a timeout of 100 seconds, finds all appointments associated with the specified doctor, and decodes the results into an array of `models.Appointment` structs. Finally, it returns the appointments in the response as an array of `JSON` objects.
-
 6. The `GetUserProperties` function retrieves the properties of a user based on their JWT token. It first extracts the token from the Authorization header and parses it to get the user's email. After checking if the token is valid, it creates a new MongoDB context with a timeout of 100 seconds, finds the user with the specified email, and decodes the result into a `models.User` struct. Lastly, it returns the user properties in the response as a JSON object.
 7. The `GetAllDoctors` function retrieves all users who are doctors. It creates a new MongoDB context with a timeout of 100 seconds, finds all users with the `isDoctor` field set to `true`, and decodes the results into an array of `models.User` structs. It logs the number of doctors found and returns the doctors in the response as an array of JSON objects.
+
+5. The `GetAppointmentsByDoctor` function retrieves all appointments associated with a specific doctor. It first extracts the doctorID from the URL parameter of the incoming request and converts it to a MongoDB ObjectID. It then creates a new MongoDB context with a timeout of 100 seconds, finds all appointments associated with the specified doctor, and decodes the results into an array of `models.Appointment` structs. Finally, it returns the appointments in the response as an array of `JSON` objects.
 
 8. The `GetUserIDByEmail` function returns the ID of a user given their email. It extracts the email from the URL parameter, creates a new MongoDB context with a timeout of 100 seconds, finds the user with the specified email, and decodes the result into a `models.User` struct. Finally, it returns the user ID in the response as a JSON object.
 
 9. The `DeleteAppointment` function deletes an appointment based on its ID. It first extracts the appointmentID from the URL parameter and converts it to a MongoDB ObjectID. Then, it creates a new MongoDB context with a timeout of 100 seconds and deletes the appointment associated with the appointment ID. If an appointment was deleted, it returns a success message in the response as a JSON object. If not, it returns an error indicating that the appointment was not found.
 
-10. The GetUsersByID function retrieves a user based on their ID. It extracts the userID from the URL parameter, converts it to a MongoDB ObjectID, and creates a new MongoDB context with a timeout of 100 seconds. It finds the user associated with the user ID and decodes the result into a models.User struct. Finally, it returns the user in the response as a JSON object.
-
-11. The ApproveDenyAppointment function approves or denies an appointment based on the incoming request. It extracts the appointmentID from the URL parameter, converts it to a MongoDB ObjectID, and retrieves the IsApproved status from the request body. If the request data is invalid, it returns a response with a BadRequest HTTP status code and an error message. Otherwise, it updates the appointment in the database with the new IsApproved status, decodes the result into a models.Appointment struct, and returns a response with an appropriate HTTP status code and message.
+10. The ApproveDenyAppointment function approves or denies an appointment based on the request data. It first extracts the appointmentID from the URL parameter and the IsApproved field from the request body. If the request data is invalid, it returns an error. Then, it converts the appointmentID to a MongoDB ObjectID and checks if it's valid. If not, it returns an error indicating that the appointment ID is invalid. Next, it sets up a filter based on the appointmentID and an update operation to change the isApproved field of the appointment according to the request data. It then attempts to find the appointment with the specified filter and apply the update. If there's an error during this process, it returns an error message indicating that there was a problem updating the appointment. If the appointment was not found, it returns an error message stating that the appointment was not found. Otherwise, it returns a success message in the response as a JSON object, indicating that the appointment was updated successfully.
 
 
 
