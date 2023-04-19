@@ -37,15 +37,19 @@ Divyanshi Saini
 5. In the other terminal window where you are at the root directory of the cloned repo, type `cd frontend`
 
 ### Instructions for Running the Backend - Server Directory
+
 The follow should be run in the terminal window where you ran `cd server`
+
 1. In the terminal, run `go mod tidy`
 2. In the terminal, run `go build main.go`
 3. In the terminal, run `go run main.go`
 4. The Golang backend should now be running
 
 ### Instructions for Running the Frontend - Frontend Directory
+
 The follow should be run in the terminal window where you ran `cd frontend`
-1. In the terminal, run `npm install`
+
+1. In the terminal, run `npm install react-scripts --save`
 2. In the terminal, run `npm install --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser`
 3. In the terminal, run `npm install react-calendar`
 4. In the terminal, run `npm start`
