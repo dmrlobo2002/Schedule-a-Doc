@@ -5,7 +5,7 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <div className="navbar w-full fixed z-10 top-0">
-      <div className="NavArea bg-gradient-to-r from-blue-400 to-teal-400 p-4 shadow-md">
+      <div className="NavArea bg-gradient-to-r from-green-400 to-blue-500 shadow-lg p-4">
         <nav>
           <ul className="flex justify-between items-center">
             <li className="nav-item">
