@@ -60,18 +60,18 @@ export const Login = () => {
               />
             </div>
             <div className="flex justify-center mb-6">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded-md focus:outline-none">LOGIN</button>
+              <button className="bg-blue-300 text-gray-700 font-semibold px-4 py-2 rounded-md focus:outline-none">LOGIN</button>
             </div>
           </form>
           <div className="text-center mb-4">
             Don't have an account?
             <Link to={"/signup"}>
-              <button className="ml-2 bg-green-500 text-white px-4 py-2 rounded-md focus:outline-none">SIGN UP</button>
+              <button className="ml-2 bg-green-300 text-gray-700 font-semibold px-4 py-2 rounded-md focus:outline-none">SIGN UP</button>
             </Link>
           </div>
           <div className="text-center">
             <Link to={"/ForgotPassword"}>
-              <button className="bg-red-500 text-white px-4 py-2 rounded-md focus:outline-none">Forgot Password?</button>
+              <button className="bg-red-300 text-gray-700 font-semibold px-4 py-2 rounded-md focus:outline-none">Forgot Password?</button>
             </Link>
           </div>
         </div>

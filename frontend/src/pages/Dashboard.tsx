@@ -15,6 +15,8 @@ export const Dashboard = () => {
       } else {
         navigate("/patient-dashboard");
       }
+    } else {
+      navigate("/signup");
     }
   }, [user, navigate]);
 
