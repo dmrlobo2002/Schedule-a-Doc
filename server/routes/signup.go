@@ -3,10 +3,11 @@ package routes
 import (
 	"context"
 	"fmt"
+	"log"
 	"net/http"
 	"strings"
 	"time"
-	"log"
+
 	//"strconv"
 
 	"server/models"
@@ -174,7 +175,7 @@ func GetUserProperties(c *gin.Context) {
 		"isDoctor":    user.IsDoctor,
 		"_id":         user.ID.Hex(), // Add this line to include the user's _id
 	})
-	
+
 }
 
 func GetAllDoctors(c *gin.Context) {
@@ -208,10 +209,6 @@ func GetAllDoctors(c *gin.Context) {
 	// Return the doctors in the response
 	c.JSON(http.StatusOK, gin.H{"doctors": doctors})
 }
-
-
-
-  
 
 func GetAppointmentsByDoctor(c *gin.Context) {
 	// Get the doctorID from the URL parameter
@@ -247,8 +244,28 @@ func GetAppointmentsByDoctor(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"appointments": appointments})
 }
 
+// GetUserIDByEmail returns the ID of a user given their email
+func GetUserIDByEmail(c *gin.Context) {
+	// Get the email from the URL parameter
+	email := c.Param("email")
 
-func GetUsersByID(c* gin.Context){
+	// Create a new MongoDB context with a timeout of 100 seconds
+	ctx, cancel := context.WithTimeout(context.Background(), 100*time.Second)
+	defer cancel()
+
+	// Find the user by email and decode the result into a Go struct
+	var user models.User
+	err := userCollection.FindOne(ctx, bson.M{"email": email}).Decode(&user)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to find user"})
+		return
+	}
+
+	// Return the user ID in the response
+	c.JSON(http.StatusOK, gin.H{"userID": user.ID.Hex()})
+}
+
+func GetUsersByID(c *gin.Context) {
 	userID := c.Param("userID")
 	// Convert the userID to a MongoDB ObjectID
 	userObjectID, err := primitive.ObjectIDFromHex(userID)
@@ -315,11 +332,39 @@ func ApproveDenyAppointment(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Appointment updated successfully"})
 }
 
+// DELETE
 
+func DeleteAppointment(c *gin.Context) {
+	// Get the appointmentID from the URL parameter
+	appointmentID := c.Param("id")
 
+	// Convert the appointmentID to a MongoDB ObjectID
+	appointmentObjectID, err := primitive.ObjectIDFromHex(appointmentID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid appointment ID"})
+		return
+	}
 
+	// Create a new MongoDB context with a timeout of 100 seconds
+	var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+	defer cancel()
 
+	// Delete the appointment associated with the appointment ID
+	result, err := appointmentCollection.DeleteOne(ctx, bson.M{"_id": appointmentObjectID})
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete appointment"})
+		return
+	}
 
+	// Check if an appointment was deleted
+	if result.DeletedCount == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Appointment not found"})
+		return
+	}
+
+	// Return a success message in the response
+	c.JSON(http.StatusOK, gin.H{"message": "Appointment deleted successfully"})
+}
 
 // func GetAllDoctors(c *gin.Context) {
 //     // Create a new MongoDB context with a timeout of 10 seconds
