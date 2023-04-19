@@ -323,6 +323,10 @@ The `signup.go` file includes code that defines three routes for a server: one f
 
 9. The `DeleteAppointment` function deletes an appointment based on its ID. It first extracts the appointmentID from the URL parameter and converts it to a MongoDB ObjectID. Then, it creates a new MongoDB context with a timeout of 100 seconds and deletes the appointment associated with the appointment ID. If an appointment was deleted, it returns a success message in the response as a JSON object. If not, it returns an error indicating that the appointment was not found.
 
+10. The GetUsersByID function retrieves a user based on their ID. It extracts the userID from the URL parameter, converts it to a MongoDB ObjectID, and creates a new MongoDB context with a timeout of 100 seconds. It finds the user associated with the user ID and decodes the result into a models.User struct. Finally, it returns the user in the response as a JSON object.
+
+11. The ApproveDenyAppointment function approves or denies an appointment based on the incoming request. It extracts the appointmentID from the URL parameter, converts it to a MongoDB ObjectID, and retrieves the IsApproved status from the request body. If the request data is invalid, it returns a response with a BadRequest HTTP status code and an error message. Otherwise, it updates the appointment in the database with the new IsApproved status, decodes the result into a models.Appointment struct, and returns a response with an appropriate HTTP status code and message.
+
 
 
 ### File: connection_test.go
