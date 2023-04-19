@@ -43,7 +43,8 @@ The follow should be run in the terminal window where you ran `cd server`
 1. In the terminal, run `go mod tidy`
 2. In the terminal, run `go build main.go`
 3. In the terminal, run `go run main.go`
-4. The Golang backend should now be running
+4. The Golang backend should now be running (Make sure that there are no other processes running on port 6001)
+
 
 ### Instructions for Running the Frontend - Frontend Directory
 
@@ -53,4 +54,4 @@ The follow should be run in the terminal window where you ran `cd frontend`
 2. In the terminal, run `npm install --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser`
 3. In the terminal, run `npm install react-calendar`
 4. In the terminal, run `npm start`
-5. The frontend should now be running at `http://localhost:3000/`
+5. The frontend should now be running at `http://localhost:3000/` (Make sure that there are no other processes running on that port: 3001)
