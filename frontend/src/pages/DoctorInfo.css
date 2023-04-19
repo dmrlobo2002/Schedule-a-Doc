@@ -1,0 +1,40 @@
+.patient{
+    display: flex;
+}
+.welcome{
+    display: center;
+}
+.Title {
+    font-weight: bold;
+    flex: 1;
+    padding: 20px;
+  }
+  .name{
+    font-weight: bold;
+    flex: 1;
+    margin-top: 100px;
+  }
+  .doctorPic{
+    display: inline-block;
+    width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  }
+  .information{
+    margin-top: 10px;
+    border: 3px solid #ccc;
+    padding-left: 50px;
+    padding: 10px;
+    border-spacing: 25px;
+    border-radius: 10px;
+  }
+  .TextInside{
+    margin: 2px;
+  }
+  .viewPatients{
+    padding: 2px;
+    border: 2px rgb(37, 138, 171);
+    border-radius: 2px;
+    background-color: rgb(37, 138, 171);
+    float: right;
+  }
