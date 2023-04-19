@@ -95,16 +95,6 @@ This test case verifies that the Go backend is able to connect to the MongoDB da
 4. Disconnect the MongoDB client by calling the Disconnect method on the client.
 5. Use the `assert.NoError` function to check if there were any errors while connecting, pinging, or disconnecting the MongoDB client. If there were no errors, the test passes. If there were any errors, the test fails and outputs the error message.
 
-### Test Case 1 - TestMongoDBConnection
-
-This test case verifies that the Go backend is able to connect to the MongoDB database. Here are the steps involved:
-
-1. Set up the client options for connecting to a MongoDB Atlas cluster hosted on `mongodb+srv://cluster0.j5xkmde.mongodb.net` using a username and password of `cen3031`.
-2. Create a MongoDB client by calling the `mongo.Connect` function and passing in the client options.
-3. Check the connection to the MongoDB database by calling the `Ping` method on the client and passing in a nil context.
-4. Disconnect the MongoDB client by calling the Disconnect method on the client.
-5. Use the `assert.NoError` function to check if there were any errors while connecting, pinging, or disconnecting the MongoDB client. If there were no errors, the test passes. If there were any errors, the test fails and outputs the error message.
-
 ### Test Case 2 - TestGetUserProperties
 
 This test case verifies that the Go backend is able to connect to the MongoDB database. Here are the steps involved:
@@ -151,6 +141,37 @@ This test case verifies that the Go backend is able to connect to the MongoDB da
 8. Assert that the response status code is HTTP 200 (OK)
 9. Find the created user in the user collection and decode it into a user struct
 10. Delete the created user from the user collection
+
+### Test Case 5 - TestCreateUserInvalidData
+
+This test case verifies that the CreateUser endpoint correctly handles invalid user data input. Here are the steps involved:
+
+1. Set up MongoDB client options
+2. Create MongoDB client
+3. Set up router and define route to create a user
+4. Create an invalid user JSON string with empty fields
+5. Create a POST request to the create user endpoint with the invalid user JSON string as the request body
+6. Record the response from the request
+7. Assert that the response status code is HTTP 400 (Bad Request) since the input data is invalid
+
+### Test Case 6 - TestGetAllDoctors
+
+This test case verifies that the GetAllDoctors endpoint retrieves all doctors from the MongoDB database. Here are the steps involved:
+
+1. Set up MongoDB client options
+2. Create MongoDB client
+3. Initialize user collection
+4. Set up router and define route to get all doctors
+5. Create two test doctors in the user collection
+6. Create a GET request to the get-all-doctors endpoint
+7. Record the response from the request
+8. Assert that the response status code is HTTP 200 (OK)
+9. Unmarshal the response body into a GetAllDoctorsResponse struct
+10. Check if the test doctors are present in the response
+11. Delete the test doctors from the user collection
+12. The createTestDoctor function is a helper function that creates a test doctor in the user collection for use in the TestGetAllDoctors test case.
+
+The 'createTestDoctor' function is a helper function that creates a test doctor in the user collection for use in the TestGetAllDoctors test case.
 
 ## What Issues Were Successful
 
