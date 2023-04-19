@@ -1,37 +1,5 @@
-.Navbar{
-    justify-content: left;
-    align-items: left;
-    display: flex;
-}
-.NavArea{
-    margin-top: 0rem;
-    width: 100vw;
-    height: 45px;
-    background-color:rgb(140, 206, 228);
-    padding: 10px;
-    border-radius: 0px;
-}
-.Element{
-    width: 20px;
-    padding: 10px;
-    margin: 1px;
-    margin-top: 10px;
-    /* outline-style: solid; */
-    /* outline-width: 1px; */
-    /* outline-color: aqua; */
-    display: inline;
-    color: white;
-    font-size: medium;
-    /* text-decoration: underline; */
-    font-weight: bold;
-}
-
-.nav-bar-element:hover {
-    text-decoration: none;
-    color: inherit;
+/* Navbar.css */
+.nav-item:not(:last-child) {
+    margin-right: 1.5rem;
   }
   
-  
-  .nav-bar-element:focus {
-    outline: none;
-  }

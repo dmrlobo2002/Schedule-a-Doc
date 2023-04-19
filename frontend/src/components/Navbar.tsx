@@ -1,33 +1,41 @@
 import React from "react";
-//use <Link></Link> as you would an anchor tag <a></a> in HTML
-//instead of using href='somepage' to point to which page you want to go to use 'to=/somepage'
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <div className="navbar ">
-      <div className="NavArea bg-gradient-to-r from-blue-400 to-teal-400">
+    <div className="navbar w-full fixed z-10 top-0">
+      <div className="NavArea bg-gradient-to-r from-green-400 to-blue-500 shadow-lg p-4">
         <nav>
-          <ul>
-            <li>
-              <Link to="/" className="nav-bar-element">
-                <div className="Element">Home</div>
+          <ul className="flex justify-between items-center">
+            <li className="nav-item">
+              <Link to="/" className="nav-bar-element text-white font-semibold text-lg hover:text-gray-200">
+                Home
               </Link>
-              <Link to="/login" className="nav-bar-element">
-                <div className="Element">Login</div>
+            </li>
+            <li className="nav-item">
+              <Link to="/login" className="nav-bar-element text-white font-semibold text-lg hover:text-gray-200">
+                Login
               </Link>
-              <Link to="/signup" className="nav-bar-element">
-                <div className="Element">Sign up</div>
+            </li>
+            <li className="nav-item">
+              <Link to="/signup" className="nav-bar-element text-white font-semibold text-lg hover:text-gray-200">
+                Sign up
               </Link>
-              <Link to="/AboutUS" className="nav-bar-element">
-                <div className="Element">About Us</div>
+            </li>
+            <li className="nav-item">
+              <Link to="/AboutUS" className="nav-bar-element text-white font-semibold text-lg hover:text-gray-200">
+                About Us
               </Link>
-              <Link to="/Dashboard" className="nav-bar-element">
-                <div className="Element">Dashboard</div>
+            </li>
+            <li className="nav-item">
+              <Link to="/Dashboard" className="nav-bar-element text-white font-semibold text-lg hover:text-gray-200">
+                Dashboard
               </Link>
-              <Link to="/scheduling" className="nav-bar-element">
-                <div className="Element">Scheduling</div>
+            </li>
+            <li className="nav-item">
+              <Link to="/scheduling" className="nav-bar-element text-white font-semibold text-lg hover:text-gray-200">
+                Scheduling
               </Link>
             </li>
           </ul>
@@ -38,4 +46,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-//something

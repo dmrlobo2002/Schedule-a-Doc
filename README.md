@@ -28,8 +28,30 @@ Richard Mercado
 
 Divyanshi Saini
 
+## How to Run Our Application
+
+1. Clone the repo using `git clone https://github.com/dmrlobo2002/Schedule-a-Doc.git`
+2. Open the new directory created after cloning in two terminal windows
+3. Ensure that GO and Node.js are installed on your computer
+4. In the other terminal window where you are at the root directory of the cloned repo, type `cd server`
+5. In the other terminal window where you are at the root directory of the cloned repo, type `cd frontend`
+
+### Instructions for Running the Backend - Server Directory
+
+The follow should be run in the terminal window where you ran `cd server`
+
+1. In the terminal, run `go mod tidy`
+2. In the terminal, run `go build main.go`
+3. In the terminal, run `go run main.go`
+4. The Golang backend should now be running (Make sure that there are no other processes running on port 6001)
 
 
+### Instructions for Running the Frontend - Frontend Directory
 
-### REMINDERS TO SELF
-1. regex to make email all lowercase
+The follow should be run in the terminal window where you ran `cd frontend`
+
+1. In the terminal, run `npm install react-scripts --save`
+2. In the terminal, run `npm install --save-dev @typescript-eslint/eslint-plugin @typescript-eslint/parser`
+3. In the terminal, run `npm install react-calendar`
+4. In the terminal, run `npm start`
+5. The frontend should now be running at `http://localhost:3000/` (Make sure that there are no other processes running on that port: 3001)
