@@ -54,16 +54,13 @@ export const SideBar = () => {
                     </Link>
                     </li >
                     <li className="list">
+                    <Link to="/PatientRecords">
                         <Diversity1RoundedIcon className="icon"/>
                         <span> Patients </span>
+                     </Link>
 
                     </li>
-                    <li className="list">
-                    <Link to="/PatientRecords">
-                        <SummarizeOutlinedIcon className="icon"/>
-                        <span> Patient Records</span>
-                    </Link>
-                    </li>
+                    
                    
                     <li className="list">
                     <Link to="/PendingRequests">
@@ -79,12 +76,16 @@ export const SideBar = () => {
                     </Link>
                     </li>
                     <li className="list">
-                        <InventoryRoundedIcon className="icon"/>
-                        <span> Daily Tasks</span>
+                        <Link to="/DailyTasks">
+                            <InventoryRoundedIcon className="icon"/>
+                            <span> Daily Tasks</span>
+                        </Link>
                     </li>
                     <li className="list">
-                        <CalendarMonthIcon className="icon"/>
-                        <span> Calendar</span>
+                        <Link to="/DaCalendar">
+                            <CalendarMonthIcon className="icon"/>
+                                <span> Calendar</span>
+                        </Link>
                     </li>
                 </ul> 
             </div>
@@ -104,3 +105,10 @@ export const SideBar = () => {
 }
 
 export default SideBar
+
+/*<li className="list">
+                    <Link to="/PatientRecords">
+                        <SummarizeOutlinedIcon className="icon"/>
+                        <span> Patient Records</span>
+                    </Link>
+                    </li>*/

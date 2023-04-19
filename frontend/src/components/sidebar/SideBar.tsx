@@ -68,8 +68,10 @@ export const SideBar = () => {
                     </Link>
                     </li>
                     <li className="list">
+                    <Link to="/PaCalendar">
                         <CalendarMonthIcon className="icon"/>
                         <span> Calendar</span>
+                    </Link>
                     </li>
                 </ul> 
             </div>
