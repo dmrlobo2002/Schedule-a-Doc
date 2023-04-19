@@ -10,8 +10,7 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
 
-export const SideBar = () => {
-    
+export const SideBar = () => { 
     const [user, setUser] = useState({
         email: "",
         phoneNumber: "",
@@ -63,8 +62,10 @@ export const SideBar = () => {
                     </li>
                     <p className="titleUser"> USER </p>
                     <li className="list">
+                    <Link to="/PatientInfo">
                     <AccountCircleRoundedIcon className="icon"/>
                         <span>Profile</span>
+                    </Link>
                     </li>
                     <li className="list">
                         <CalendarMonthIcon className="icon"/>

@@ -1,0 +1,54 @@
+.patient {
+    display: flex;
+  }
+  .Descriptor {
+    font-size: small;
+  }
+  .Title {
+    font-weight: bold;
+    flex: 1;
+    padding: 20px;
+  }
+  .list-item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .Approve{
+    font-weight: bold;
+    padding-left: 50px;
+    display: inline;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: green;
+  }
+  .Deny{
+    font-weight: bold;
+    display: inline;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: red;
+  }
+  .content{
+    border: 1px solid black;
+    padding: 5px;
+    display: block;
+    border-radius: 8px;
+    padding: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .name-box {
+    font-weight: normal;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  h1 {
+    margin-left: 20px;
+  }

@@ -59,17 +59,24 @@ export const SideBar = () => {
 
                     </li>
                     <li className="list">
+                    <Link to="/PatientRecords">
                         <SummarizeOutlinedIcon className="icon"/>
                         <span> Patient Records</span>
+                    </Link>
                     </li>
+                   
                     <li className="list">
+                    <Link to="/PendingRequests">
                         <RuleRoundedIcon className="icon"/>
-                        <span> Appointment Requests</span>
+                            <span> Appointment Requests</span>
+                    </Link>
                     </li>
                     <p className="titleUser"> USER </p>
                     <li className="list">
-                    <AccountCircleRoundedIcon className="icon"/>
-                        <span>Profile</span>
+                    <Link to="/doctorInfo">
+                        <AccountCircleRoundedIcon className="icon"/>
+                            <span>Profile</span>
+                    </Link>
                     </li>
                     <li className="list">
                         <InventoryRoundedIcon className="icon"/>
