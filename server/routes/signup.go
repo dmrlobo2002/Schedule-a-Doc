@@ -332,6 +332,8 @@ func ApproveDenyAppointment(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Appointment updated successfully"})
 }
 
+// DELETE
+
 // func GetAllDoctors(c *gin.Context) {
 //     // Create a new MongoDB context with a timeout of 10 seconds
 //     ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
