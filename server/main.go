@@ -36,12 +36,13 @@ func main() {
 	//C
 	router.POST("/signup", routes.CreateUser)
 	router.POST("/login", routes.Login)
-	router.POST("/createAppointmnet", routes.CreateAppointment)
+	router.POST("/createAppointment", routes.CreateAppointment)
 	//R
 	router.GET("/user-properties", routes.GetUserProperties)
 	router.GET("/doctors", routes.GetAllDoctors)
 	router.GET("/appointments/:doctorID", routes.GetAppointmentsByDoctor)
 	router.GET("/users/:userID", routes.GetUsersByID)
+	router.GET("/userID/:email", routes.GetUserIDByEmail)
 
 	//U
 	router.PATCH("/appointments/:id/status", routes.ApproveDenyAppointment)
