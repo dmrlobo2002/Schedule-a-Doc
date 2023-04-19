@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useUser from "../hooks/useUser";
+import "./DoctorScheduling.css";
+// import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/solid";
+import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline'
 
 type Appointment = {
   id: string;
@@ -146,56 +149,72 @@ const DoctorScheduling = () => {
       return null;
     }
   };
-
   return (
-    <div>
-      <h1>Doctor Scheduling</h1>
-      <table>
-        <thead>
-          {Array.isArray(appointments) &&
-            appointments !== null &&
-            appointments.length > 0 &&
-            appointments.map((appointment: any) => (
-              <tr key={appointment.id}>
-                <td>{formatDate(appointment.date)}</td>
-                <td>{appointment.patientName}</td>
-                <td>{appointment.isApproved ? "Approved" : "Pending"}</td>
-                <td>
-                  {appointment.isApproved ? (
-                    <button onClick={() => handleDeny(appointment.ID)}>
-                      Deny
-                    </button>
-                  ) : (
-                    <button onClick={() => handleApprove(appointment.ID)}>
-                      Approve
-                    </button>
-                  )}
-                </td>
+    <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+      <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+        <h1 className="text-3xl font-bold mb-6 text-center">Doctor Scheduling</h1>
+        <div className="shadow-md rounded-lg p-6 bg-white">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Date
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Patient Name
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Status
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Action
+                </th>
               </tr>
-            ))}
-        </thead>
-        <tbody>
-          {Array.isArray(appointments) &&
-            appointments.map((appointment: any) => (
-              <tr key={appointment.id}>
-                <td>{formatDate(appointment.date)}</td>
-                <td>{appointment.patientName}</td>
-                <td>{appointment.isApproved ? "Approved" : "Pending"}</td>
-                <td>
-                  {appointment.isApproved ? (
-                    <button onClick={() => handleDeny(appointment.ID)}>
-                      Deny
-                    </button>
-                  ) : (
-                    <button onClick={() => handleApprove(appointment.ID)}>
-                      Approve
-                    </button>
-                  )}
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {Array.isArray(appointments) &&
+                appointments.map((appointment: any, index: number) => (
+                  <tr key={appointment.id}>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {formatDate(appointment.date)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {appointment.patientName}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {appointment.isApproved ? (
+                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                          Approved
+                        </span>
+                      ) : (
+                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                          Pending
+                        </span>
+                      )}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      {appointment.isApproved ? (
+                        <button
+                          onClick={() => handleDeny(appointment.ID)}
+                          className="text-red-600 hover:text-red-900"
+                        >
+                          <XCircleIcon className="h-5 w-5" />
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => handleApprove(appointment.ID)}
+                          className="text-green-600 hover:text-green-900"
+                        >
+                          <CheckCircleIcon className="h-5 w-5" />
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
