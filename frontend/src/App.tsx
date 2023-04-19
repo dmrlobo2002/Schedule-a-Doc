@@ -20,6 +20,8 @@ import VerificationCode from "./pages/VerificationCode";
 import { PasswordReset } from "./pages/PasswordReset";
 import DoctorScheduling from "./pages/DoctorScheduling";
 
+import PaCalendar from "./pages/PaCalendar";
+
 function App() {
   return (
     <>
@@ -41,6 +43,7 @@ function App() {
           <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
           {/* <Route path="/DoctorScheduling" element={<DoctorScheduling />} />*/}
           <Route path="/PatientScheduling" element={<PatientScheduling />} />
+          <Route path="/PaCalendar" element={<PaCalendar />} />
         </Routes>
       </div>
     </>

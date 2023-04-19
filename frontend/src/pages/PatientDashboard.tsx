@@ -4,6 +4,9 @@ import SideBar from "../components/sidebar/SideBar";
 import PatientWidgets from "../components/widgets/PatientWidgets";
 import "./PatientDashboard";
 
+
+
+
 export const PatientDashboard = () => {
   const [user, setUser] = useState({
     email: "",
@@ -36,6 +39,7 @@ export const PatientDashboard = () => {
         <div className="pwidget">
          
       </div>
+    
       </div> 
     </div>
     
