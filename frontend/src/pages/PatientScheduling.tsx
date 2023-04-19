@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useUser from "../hooks/useUser";
+import "./PatientScheduling.css";
 
 interface Doctor {
   id: string;
@@ -146,32 +147,87 @@ const PatientScheduling = () => {
     return doctorOptions;
   };
   return (
-    <div>
-      <h1>Schedule an Appointment</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Date:
-          <input type="date" value={selectedDate?.toISOString().split("T")[0]} onChange={handleDateChange} required />
-        </label>
-        <label>
-          Time:
-          <select value={selectedTime} onChange={handleTimeChange} required>
-            <option value="">Select a time</option>
-            {renderTimeOptions()}
-          </select>
-        </label>
-        <label>
-          Doctor:
-          <select value={selectedDoctor} onChange={handleDoctorChange} required>
-            <option value="">Select a doctor</option>
-            {renderDoctorOptions()}
-          </select>
-        </label>
-        <button type="submit">Schedule Appointment</button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 py-6 sm:py-12">
+      <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+        <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+          <h1 className="text-4xl font-semibold mb-6">Schedule an Appointment</h1>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label className="block text-gray-700">Date:</label>
+              <input
+                type="date"
+                value={selectedDate?.toISOString().split("T")[0]}
+                onChange={handleDateChange}
+                required
+                className="mt-1 p-2 bg-gray-200 rounded-lg w-full focus:outline-none focus:ring focus:border-blue-300"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700">Time:</label>
+              <select
+                value={selectedTime}
+                onChange={handleTimeChange}
+                required
+                className="mt-1 p-2 bg-gray-200 rounded-lg w-full focus:outline-none focus:ring focus:border-blue-300"
+              >
+                <option value="">Select a time</option>
+                {renderTimeOptions()}
+              </select>
+            </div>
+            <div className="mb-6">
+              <label className="block text-gray-700">Doctor:</label>
+              <select
+                value={selectedDoctor}
+                onChange={handleDoctorChange}
+                required
+                className="mt-1 p-2 bg-gray-200 rounded-lg w-full focus:outline-none focus:ring focus:border-blue-300"
+              >
+                <option value="">Select a doctor</option>
+                {renderDoctorOptions()}
+              </select>
+            </div>
+            <button
+              type="submit"
+              className="w-full py-3 px-4 text-white font-semibold bg-gradient-to-r from-green-400 to-blue-500 rounded-lg"
+            >
+              Schedule Appointment
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
+
+// export default PatientScheduling;
+//   return (
+//     <div>
+//       <h1>Schedule an Appointment</h1>
+//       <form onSubmit={handleSubmit}>
+//         <label>
+//           Date:
+//           <input type="date" value={selectedDate?.toISOString().split("T")[0]} onChange={handleDateChange} required />
+//         </label>
+//         <label>
+//           Time:
+//           <select value={selectedTime} onChange={handleTimeChange} required>
+//             <option value="">Select a time</option>
+//             {renderTimeOptions()}
+//           </select>
+//         </label>
+//         <label>
+//           Doctor:
+//           <select value={selectedDoctor} onChange={handleDoctorChange} required>
+//             <option value="">Select a doctor</option>
+//             {renderDoctorOptions()}
+//           </select>
+//         </label>
+//         <button type="submit">Schedule Appointment</button>
+//       </form>
+//     </div>
+//   );
+// };
 
 //   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 //     event.preventDefault();
