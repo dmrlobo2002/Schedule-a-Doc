@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import SideBarD from "../components/sidebar/SideBardD";
 
 import './PaCalendar.css'
 
@@ -48,14 +49,16 @@ interface IAppState {
     };
   
     return (
-      <div className="PaCalendar">
-    
-        <Calendar
-          onClickDay={handleDateClick}
-          tileContent={tileContent}
-          className="calendar"
-        />
-      </div>
+        <div className="Cal">
+             <SideBarD />
+            <div className="PaCalendar">
+            <Calendar
+            onClickDay={handleDateClick}
+            tileContent={tileContent}
+            className="calendar"/>
+            </div>    
+        </div>
+      
     );
   };
 
