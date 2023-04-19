@@ -8,6 +8,7 @@
     "@fullcalendar/list": "^6.1.5",
     "@fullcalendar/react": "^6.1.5",
     "@fullcalendar/timegrid": "^6.1.5",
+    "@heroicons/react": "^2.0.17",
     "@material-ui/icons": "^4.11.3",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.1",

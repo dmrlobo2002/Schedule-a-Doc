@@ -6,6 +6,7 @@
     margin: 20px auto;
     max-width: 600px;
     padding: 20px;
+    
   }
   
   .daily-schedule-header {
@@ -43,4 +44,12 @@
   
   .daily-schedule-event {
     font-size: 18px;
+  }
+
+  .patientbox{
+    padding-top: 10vh;
+  }
+
+  .patient{
+    padding-top: 10vh;
   }
