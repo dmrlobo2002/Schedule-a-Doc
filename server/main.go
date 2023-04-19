@@ -48,6 +48,7 @@ func main() {
 	router.PATCH("/appointments/:id/status", routes.ApproveDenyAppointment)
 
 	//D
+	router.DELETE("/appointments/:id", routes.DeleteAppointment)
 
 	//this runs the server and allows it to listen to requests.
 	router.Run(":" + port)
