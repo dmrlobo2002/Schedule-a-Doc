@@ -171,7 +171,6 @@ This test case verifies that the GetAllDoctors endpoint retrieves all doctors fr
 11. Delete the test doctors from the user collection
 12. The createTestDoctor function is a helper function that creates a test doctor in the user collection for use in the TestGetAllDoctors test case.
 
-The 'createTestDoctor' function is a helper function that creates a test doctor in the user collection for use in the TestGetAllDoctors test case.
 
 ## What Issues Were Successful
 
@@ -370,7 +369,7 @@ The `TestCreateAppointment` test function tests whether an appointment can be cr
 6. Checks that the appointment was created by querying the `appointmentCollection` for the newly created appointment with the date "2023-04-15T10:30:00Z".
 7. Deletes the test appointment from the appointmentCollection.
 
-`TestGetUserProperties`
+### `TestGetUserProperties`
 The `TestGetUserProperties` test function tests whether user properties can be retrieved through the routes.GetUserProperties API endpoint. The test function does the following:
 
 1. Creates a MongoDB client and a userCollection variable for the "users" collection.
@@ -383,3 +382,26 @@ The `TestGetUserProperties` test function tests whether user properties can be r
 8. Asserts that the retrieved user properties match the properties of the test user created in step 3.
 9. Deletes the test user from the userCollection.
 
+### `TestCreateUserInvalidData`
+The `TestCreateUserInvalidData` test function tests the behavior of the routes.CreateUser API endpoint when it is called with invalid data. The function does the following:
+
+1. Creates a MongoDB client using the mongo.NewClient function and passing the connection string "mongodb+srv://cen3031:cen3031@cluster0.j5xkmde.mongodb.net/?retrxyWrites=true&w=majority".
+2. Connects to the MongoDB server using the client.Connect function.
+3. Creates a gin router and adds the routes.CreateUser API endpoint to it.
+4. Creates a JSON string representing an invalid user with empty values for all fields.
+5. Sends a POST request to the routes.CreateUser endpoint with the JSON string as the request body.
+6. Checks that the response status code is http.StatusBadRequest.
+
+### `TestGetAllDoctors`
+The `TestGetAllDoctors` test function tests the behavior of the routes.GetAllDoctors API endpoint, which returns all doctor users in the database. The function does the following:
+
+1. Creates a MongoDB client using the mongo.NewClient function and passing the connection string "mongodb+srv://cen3031:cen3031@cluster0.j5xkmde.mongodb.net/?retrxyWrites=true&w=majority".
+2. Connects to the MongoDB server using the client.Connect function.
+3. Creates a userCollection variable for the "users" collection.
+4. Creates a gin router and adds the routes.GetAllDoctors API endpoint to it.
+5. Calls the createTestDoctor helper function twice to create two test doctor users in the database.
+6. Sends a GET request to the routes.GetAllDoctors endpoint.
+7. Checks that the response status code is http.StatusOK.
+8. Unmarshals the response body into a GetAllDoctorsResponse struct.
+9. Checks that the two test doctor users are present in the response.
+10. Calls the deleteTestUser helper function to delete the test doctor users from the database.
