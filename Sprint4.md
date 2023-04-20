@@ -11,7 +11,7 @@ During this sprint, our main focus was on enhancing the patient and doctor dashb
 
 ## Frontend Cypress Tests
 
-We created two Cypress test cases to test the functionality of the frontend of the web application. Here are the details:
+We created eight Cypress test cases to test the functionality of the frontend of the web application. Here are the details:
 
 ### Test Case 1 - Home Page Works
 
