@@ -46,9 +46,9 @@ export const DoctorInfo = () => {
     <div className = "patient">
       <SideBarD />
       <div className="name"> 
-      <h1>
+      <div className="welcome">
         Welcome, Dr. Valderrama
-      </h1>
+      </div>
         <img className="doctorPic" src={image}>
         </img>
         <div className="information">
