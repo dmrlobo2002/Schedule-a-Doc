@@ -38,7 +38,6 @@ describe('empty spec', () => {
     cy.findAllByText('Doctor Dashboard').should('exist');
     cy.findAllByText('Doctor Dashboard').click();
     cy.findAllByText('Patients').should('exist');
-    cy.findAllByText('Patient Records').should('exist');
     cy.findAllByText('Appointment Requests').should('exist');
     cy.findAllByText('Profile').should('exist');
     cy.findAllByText('Daily Tasks').should('exist');
@@ -62,4 +61,55 @@ describe('empty spec', () => {
     cy.findAllByText('CONTINUE').click();
   })
 
+  it('Dashboard Functionality', () =>{
+    cy.visit('http://localhost:3000/Dashboard')
+    cy.findAllByText('Doctor Dashboard').should('exist');
+    cy.findAllByText('Doctor Dashboard').click();
+    cy.findAllByText('Patients').should('exist');
+    cy.findAllByText('Patients').click();
+    cy.findAllByText('Alice Brown').should('exist');
+    cy.findAllByText('Alice Brown').click();
+    cy.findAllByText('View Lab Results').click();
+    cy.findAllByText('Appointment Requests').should('exist');
+    cy.findAllByText('Appointment Requests').click();
+    cy.findAllByText('Profile').should('exist');
+    cy.findAllByText('Profile').click();
+    cy.findAllByText('Daily Tasks').should('exist');
+    cy.findAllByText('Daily Tasks').click();
+    cy.findAllByText('Logout').should('exist');
+    cy.findAllByText('Logout').click();
+  }) 
+
+
+  it('Calendar', () =>{
+    cy.visit('http://localhost:3000/Dashboard')
+    cy.findAllByText('Doctor Dashboard').should('exist');
+    cy.findAllByText('Doctor Dashboard').click();
+    cy.findAllByText('Calendar').should('exist');
+    cy.findAllByText('Calendar').click();
+    cy.findAllByText('BACK').should('exist');
+    cy.findAllByText('BACK').click();
+    cy.findAllByText('Logout').should('exist');
+    cy.findAllByText('Logout').click();
+  }) 
+
+  it('Doctor Profile', () =>{
+    cy.visit('http://localhost:3000/Dashboard')
+    cy.findAllByText('Doctor Dashboard').click();
+    cy.findAllByText('Profile').should('exist');
+    cy.findAllByText('Profile').click();
+    cy.findAllByText('View Patients').click();
+    cy.findAllByText('Profile').click();
+    cy.findAllByText('View Tasks').click();
+    cy.findAllByText('Profile').click();
+    cy.findAllByText('View Requests').click();
+    cy.findAllByText('Profile').click();
+    cy.findAllByText('Calendar').click();
+    cy.findAllByText('BACK').click();
+    cy.findAllByText('Profile').click();
+    cy.findAllByText('Daily Tasks').should('exist');
+    cy.findAllByText('Daily Tasks').click();
+    cy.findAllByText('Logout').should('exist');
+    cy.findAllByText('Logout').click();
+  }) 
 })

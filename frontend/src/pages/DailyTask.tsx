@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import axios from "axios";
 import SideBarD from "../components/sidebar/SideBardD";
 import TodoList from './ToDo';
+import "./ToDo.css"
 //npm install query strings
 
 export const DailyTasks = () => {
