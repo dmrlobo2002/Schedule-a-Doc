@@ -79,6 +79,37 @@ This test case verifies that the forgot password page of the web application is 
 11. Retype the same password into the confirm password input field using  `cy.findByPlaceholderText('Confirm Password').type('hello').should('be.visible')`.
 12. Click on the 'CONTINUE' button and be redirected to homepage using `cy.findAllByText('CONTINUE').click()`.
 
+### Test Case 6 - Dashboard Functionality
+This test case verifies that the different tabs are functioning correctly. Here are the steps involved:
+1.Visit the dashboard page of the web application using `cy.visit('http://localhost:3000/Dashboard')`.
+2. Check if the 'Doctor Dashboard' button exists on the page using `cy.findAllByText('Doctor Dashboard').should('exist')`.
+3. Click the 'Doctort Dashboard' button  `cy.findAllByText('Doctor Dashboard').click()`.
+4. Check if the 'Patients' button exists on the page using `cy.findAllByText('Patients').should('exist')`.
+5. Check if patient 'Alice Brown' exists on the page using `cy.findAllByText('Alice Brown').should('exist')`.
+6. Click on patient 'Alice Brown' to access information about the patient using `cy.findAllByText('Alice Brown').click()`.
+7. Click on patient 'Lab Result' to access patient's lab results using `cy.findAllByText('View Lab Results').click()`.
+8. Check if the 'Appointement Requests' button exists on the page using `cy.findAllByText('Appointment Requests').should('exist')`.
+9. Click on 'Appointement Requests' to view requests using `cy.findAllByText('Appointment Requests').click()`.
+10. Check if the 'Profile' button exists on the page using `cy.findAllByText('Profile').should('exist')`.
+11. Click on 'Profile' to view user's profile using `cy.findAllByText('Profile').click()`.
+12. Check if the 'Daily Tasks' button exists on the page using `cy.findAllByText('Daily Tasks').should('exist')`.
+13. Click on 'Daily Tasks' to view user's schedule for the day using `cy.findAllByText('Daily Tasks').click()`.
+15. Check if the 'Logout' button exists on the page using `cy.findAllByText('Logout').should('exist')`.
+16.Click on the 'Logout' button, should return back to homepage `cy.findAllByText('Logout').click()`.
+
+
+### Test Case 7 - Calendar
+This test case verifies that user can acess the calendar and view its functionalities. Here are the steps involved:
+1.Visit the dashboard page of the web application using `cy.visit('http://localhost:3000/Dashboard')`.
+2. Check if the 'Doctor Dashboard' button exists on the page using `cy.findAllByText('Doctor Dashboard').should('exist')`.
+3. Click the 'Doctort Dashboard' button  `cy.findAllByText('Doctor Dashboard').click()`.
+4. Check if the 'Calendar' button exists on the page using `cy.findAllByText('Calendar').should('exist')`.
+5. Click on the 'Calendar' button to view the calendar using `cy.findAllByText('Calendar').click()`.
+6. Check if the 'BACK' button exists on the page using `cy.findAllByText('BACK').should('exist')`.
+7. Click on the 'BACK' button to go back to the dashoard using `cy.findAllByText('BACK').click();`.
+8. Check if the 'Logout' button exists on the page using `cy.findAllByText('Logout').should('exist')`.
+9. Click on the 'Logout' button, should return back to homepage `cy.findAllByText('Logout').click()`.
+
 
 ## Backend Unit Tests
 
