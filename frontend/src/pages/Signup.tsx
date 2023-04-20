@@ -44,82 +44,77 @@ const Signup: React.FC = () => {
       console.error(error);
     }
   };
-
   return (
-    <div className="signup">
-      <div className="outer bg-gradient-to-r from-cyan-500 to-blue-500 shadow-2xl">
-        <div className="inner">
-          <div className="signupLogo">Sign Up</div>
-          <div className="userInput">
-            <input
-              className="firstName"
-              placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-            <input
-              className="lastName"
-              placeholder="Last Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-            <input
-              className="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              className="phonenumber"
-              placeholder="Phone Number"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
-            <input
-              type="password"
-              className="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <input
-              type="password"
-              className="renterpassword"
-              placeholder="Re-enter Password"
-              value={reEnterPassword}
-              onChange={(e) => setReEnterPassword(e.target.value)}
-            />
-            <div className="doctorSelection">
-              Are you a doctor?
-              <div>
-                <input
-                  type="radio"
-                  id="yes"
-                  name="isDoctor"
-                  value="yes"
-                  checked={isDoctor === true}
-                  onChange={() => setIsDoctor(true)}
-                />
-                <label htmlFor="yes">Yes</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="no"
-                  name="isDoctor"
-                  value="no"
-                  checked={isDoctor === false}
-                  onChange={() => setIsDoctor(false)}
-                />
-                <label htmlFor="no">No</label>
-              </div>
-            </div>
+    <div className="signup min-h-screen flex items-center justify-center bg-gradient-to-r from-cyan-500 to-blue-500">
+      <div className="outer bg-white shadow-2xl p-8 rounded-lg">
+        <h1 className="signupLogo text-4xl font-bold mb-6">Sign Up</h1>
+        <div className="userInput space-y-4">
+          <input
+            className="input-field"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+          <input
+            className="input-field"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+          <input
+            className="input-field"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            className="input-field"
+            placeholder="Phone Number"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+          />
+          <input
+            type="password"
+            className="input-field"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="password"
+            className="input-field"
+            placeholder="Re-enter Password"
+            value={reEnterPassword}
+            onChange={(e) => setReEnterPassword(e.target.value)}
+          />
+          <div className="doctorSelection mt-4 mb-6">
+            <span className="text-lg font-semibold mr-4">Are you a doctor?</span>
+            <label className="inline-flex items-center mr-4">
+              <input
+                type="radio"
+                name="isDoctor"
+                value="yes"
+                checked={isDoctor === true}
+                onChange={() => setIsDoctor(true)}
+                className="form-radio"
+              />
+              <span className="ml-2">Yes</span>
+            </label>
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="isDoctor"
+                value="no"
+                checked={isDoctor === false}
+                onChange={() => setIsDoctor(false)}
+                className="form-radio"
+              />
+              <span className="ml-2">No</span>
+            </label>
           </div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <button className="signupButton" onClick={handleSignup}>
-              SIGN UP
-            </button>
-          </div>
+          <button className="signupButton px-6 py-2 text-lg font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-500 rounded hover:shadow-md" onClick={handleSignup}>
+            SIGN UP
+          </button>
         </div>
       </div>
     </div>

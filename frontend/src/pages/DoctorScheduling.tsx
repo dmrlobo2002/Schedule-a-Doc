@@ -150,9 +150,9 @@ const DoctorScheduling = () => {
     }
   };
   return (
-    <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+    <div className="navbar w-full fixed bg-gradient-to-r from-cyan-500 to-blue-500 min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <h1 className="text-3xl font-bold mb-6 text-center">Doctor Scheduling</h1>
+        <h1 className="text-3xl text-white font-bold mb-6 text-center">Doctor Scheduling</h1>
         <div className="shadow-md rounded-lg p-6 bg-white">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
