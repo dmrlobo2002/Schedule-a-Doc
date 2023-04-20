@@ -111,6 +111,27 @@ This test case verifies that user can acess the calendar and view its functional
 9. Click on the 'Logout' button, should return back to homepage `cy.findAllByText('Logout').click()`.
 
 
+### Test Case 8 - Doctor Profile
+This test case verifies that the different tabs are functioning correctly. Here are the steps involved:
+1.Visit the dashboard page of the web application using `cy.visit('http://localhost:3000/Dashboard')`.
+2. Check if the 'Doctor Dashboard' button exists on the page using `cy.findAllByText('Doctor Dashboard').should('exist')`.
+3. Click the 'Doctort Dashboard' button  `cy.findAllByText('Doctor Dashboard').click()`.
+4. Check if the 'Profile' button exists on the page using `cy.findAllByText('Profile').should('exist')`.
+5. Click on 'Profile' to view user's profile using `cy.findAllByText('Profile').click()`.
+6. Click on 'View Patients' to view doctor's clients profile using `cy.findAllByText('View Patients').click()`.
+7. Click on 'Profile' to navigate back to user's profile using `cy.findAllByText('Profile').click()`.
+8. Click on 'View Tasks' to view doctor's task using `cy.findAllByText('View Tasks').click()`.
+9. Click on 'Profile' to navigate back to  user's profile using `cy.findAllByText('Profile').click()`.
+10. Click on 'View Requests' to view doctor's pending requests using `cy.findAllByText('View Requests').click()`.
+11. Click on 'Profile' to navigate back to  user's profile using `cy.findAllByText('Profile').click()`.
+12. Click on the 'Calendar' button to view the calendar using `cy.findAllByText('Calendar').click()`.
+13. Check if the 'BACK' button exists on the page using `cy.findAllByText('BACK').should('exist')`.
+14. Click on 'Profile' to navigate back to  user's profile using `cy.findAllByText('Profile').click()`.
+15. Check if the 'Daily Tasks' button exists on the page using `cy.findAllByText('Daily Tasks').should('exist')`.
+16. Click on 'Daily Tasks' to view user's schedule for the day using `cy.findAllByText('Daily Tasks').click()`.
+17. Check if the 'Logout' button exists on the page using `cy.findAllByText('Logout').should('exist')`.
+18. Click on the 'Logout' button, should return back to homepage `cy.findAllByText('Logout').click()`.
+
 ## Backend Unit Tests
 
 We created a unit test case for the backend of the web application. Here are the details:
