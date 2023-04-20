@@ -15,9 +15,10 @@ const Scheduling = () => {
       } else {
         navigate("/PatientScheduling");
       }
-    } else {
-      navigate("/signup")
-    }
+    } 
+    // else {
+    //   navigate("/signup")
+    // }
   }, [user, navigate]);
 
   return (

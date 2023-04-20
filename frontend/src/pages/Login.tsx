@@ -24,12 +24,14 @@ export const Login = () => {
         password,
       });
       if (response.status === 200) {
+        console.log("omg we made it")
          // destructure the token and isDoctor properties from the response.data object
         //remember that login returns the object?
         localStorage.setItem("token", response.data.token);
         navigate("/Dashboard");
       }
     } catch (error) {
+      console.log("omg we fucked it")
       console.error(error);
     }
   };

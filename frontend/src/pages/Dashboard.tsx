@@ -9,6 +9,7 @@ export const Dashboard = () => {
   const { user, setUser } = useUser();
 
   useEffect(() => {
+    console.log(user)
     // Check if the user data has been fetched
     if (user && user.email) {
       if (user.isDoctor) {
@@ -16,9 +17,11 @@ export const Dashboard = () => {
       } else {
         navigate("/patient-dashboard");
       }
-    } else {
-      navigate("/signup");
     }
+    // else {
+    //   console.log("uh oh spaggetio")
+    //   navigate("/signup");
+    // }
   }, [user, navigate]);
 
   return (
